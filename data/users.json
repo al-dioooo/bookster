@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Aliceee",
+        "username": "aliceevr",
+        "password": "aldio1234",
+        "role": "administrator"
+    },
+    {
+        "id": 2,
+        "name": "Aldiooo",
+        "username": "aldio",
+        "password": "aldio1234",
+        "role": "librarian"
+    },
+    {
+        "id": 3,
+        "name": "Arisuuu",
+        "username": "arisu",
+        "password": "aldio1234",
+        "role": "user"
+    }
+]
