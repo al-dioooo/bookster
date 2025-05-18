@@ -692,7 +692,7 @@ class Ui_MainWindow(object):
         self.bookListScrollArea.setWidgetResizable(True)
         self.bookListScrollAreaWidgetContents = QWidget()
         self.bookListScrollAreaWidgetContents.setObjectName(u"bookListScrollAreaWidgetContents")
-        self.bookListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 214))
+        self.bookListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 226))
         self.verticalLayout_11 = QVBoxLayout(self.bookListScrollAreaWidgetContents)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
@@ -820,7 +820,7 @@ class Ui_MainWindow(object):
         self.userListScrollArea.setWidgetResizable(True)
         self.userListScrollAreaWidgetContents = QWidget()
         self.userListScrollAreaWidgetContents.setObjectName(u"userListScrollAreaWidgetContents")
-        self.userListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 284))
+        self.userListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 72, 16))
         self.verticalLayout_13 = QVBoxLayout(self.userListScrollAreaWidgetContents)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
@@ -846,7 +846,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

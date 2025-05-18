@@ -1,4 +1,4 @@
-from fileHelper import JsonFileHelper
+from helpers.fileHelper import JsonFileHelper
 
 
 class BookModel:
