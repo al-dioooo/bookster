@@ -10,6 +10,11 @@
     <height>624</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>.AppleSystemUIFont</family>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Bookster</string>
   </property>
@@ -1420,8 +1425,8 @@ QScrollBar {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>72</width>
-             <height>16</height>
+             <width>96</width>
+             <height>26</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_13">

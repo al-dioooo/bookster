@@ -1,86 +1,151 @@
-# bookManagement.py
-from PySide6.QtWidgets import QWidget, QLineEdit, QToolButton
-from PySide6.QtGui import QIcon
+from pathlib import Path
 from PySide6.QtCore import QSize
-from customWidgets.bookCardList import BookCardList
+from PySide6.QtGui import QIcon
+from PySide6.QtWidgets import QLineEdit, QToolButton, QWidget, QMessageBox
+
+# helpers
+from helpers.bookModel import BookModel
+from helpers.stockModel import StockModel
+
+# pages widgets & dialogs
+from pages.bookManagement.bookFormDialog import BookFormDialog
+from customWidgets.bookListItem import BookListItem
 
 
 class BookManagementPageController:
+    """
+    Controller halaman Book-Management:
+      • List + search
+      • Create / Edit / Delete
+      • Sinkron stok
+    """
+
     def __init__(self, mainWindow):
         self.mainWindow = mainWindow
-        self.books = [
-            {"name": "Bumi Manusia", "description": "Lorem ipsum dolor sit amet."},
-            {"name": "Matahari", "description": "Lorem ipsum dolor sit amet."},
-            {"name": "Langit", "description": "Lorem ipsum dolor sit amet."},
-            {"name": "Bulan", "description": "Lorem ipsum dolor sit amet."},
-            {"name": "Laut Bercerita", "description": "Lorem ipsum dolor sit amet."},
-            {"name": "Pulang", "description": "Lorem ipsum dolor sit amet."},
-            {"name": "Bumi", "description": "Lorem ipsum dolor sit amet."},
-            {"name": "Cantik itu Luka", "description": "Lorem ipsum dolor sit amet."},
-            {"name": "Laskar Pelangi", "description": "Lorem ipsum dolor sit amet."},
-            {
-                "name": "Perjalanan Menuju Pulang",
-                "description": "Lorem ipsum dolor sit amet.",
-            },
-        ]
 
-        self.setupUi()
+        # model
+        self.bookModel = BookModel("data/books.json")
+        self.stockModel = StockModel("data/stocks.json")
+
+        self.books = self.bookModel.getAll()
+
+        self.setupUI()
         self.connectSignals()
         self.populateBookList(self.books)
 
-    def setupUi(self):
-        self.bookListScrollArea = self.getBookListScrollArea()
+    # ---------------- UI ----------------
+    def setupUI(self):
+        # grab widget dari UI utama
+        self.bookListScrollArea = self._f(QWidget, "bookListScrollArea")
         self.bookListScrollContent = self.bookListScrollArea.widget()
         self.bookListScrollLayout = self.bookListScrollContent.layout()
-        self.searchBookInput = self.getSearchBookInput()
-        self.addBookButton = self.getAddBookButton()
-        self.bookManagementBackButton = self.getBackButton()
 
-        plusIcon = QIcon("assets/icons/plus.svg")
-        self.addBookButton.setIcon(plusIcon)
+        self.searchBookInput = self._f(QLineEdit, "searchBookInput")
+        self.addBookButton = self._f(QToolButton, "addBookButton")
+        self.backButton = self._f(QToolButton, "bookManagementBackButton")
+        self.pageDescription = self._f(QWidget, "bookPageDescription")
+
+        # icon
+        self.addBookButton.setIcon(QIcon("assets/icons/plus.svg"))
         self.addBookButton.setIconSize(QSize(20, 20))
+        self.backButton.setIcon(QIcon("assets/icons/arrow-narrow-left.svg"))
+        self.backButton.setIconSize(QSize(20, 20))
 
-        backIcon = QIcon("assets/icons/arrow-narrow-left.svg")
-        self.bookManagementBackButton.setIcon(backIcon)
-        self.bookManagementBackButton.setIconSize(QSize(20, 20))
-
+    # ---------------- Signals ----------------
     def connectSignals(self):
-        self.searchBookInput.textChanged.connect(self.onSearchBookInputChanged)
-        self.bookManagementBackButton.clicked.connect(
+        self.searchBookInput.textChanged.connect(self.filterBooks)
+        self.backButton.clicked.connect(
             lambda: self.mainWindow.stackedWidget.setCurrentWidget(
                 self.mainWindow.mainPage
             )
         )
+        self.addBookButton.clicked.connect(self.openCreateDialog)
 
-    def getBookListScrollArea(self):
-        return self.mainWindow.findChild(QWidget, "bookListScrollArea")
+    # ---------------- helpers ----------------
+    def _f(self, typ, name):
+        return self.mainWindow.findChild(typ, name)
 
-    def getSearchBookInput(self):
-        return self.mainWindow.findChild(QLineEdit, "searchBookInput")
-
-    def getAddBookButton(self):
-        return self.mainWindow.findChild(QToolButton, "addBookButton")
-
-    def getBackButton(self):
-        return self.mainWindow.findChild(QToolButton, "bookManagementBackButton")
-
-    def onSearchBookInputChanged(self, text):
-        filteredBooks = [
-            book
-            for book in self.books
-            if text.lower() in book["name"].lower()
-            or text.lower() in book["description"].lower()
-        ]
-        self.populateBookList(filteredBooks)
+    # ---------------- list & search ----------------
+    def filterBooks(self, text: str):
+        key = text.lower()
+        self.populateBookList(
+            [
+                b
+                for b in self.books
+                if key in b["title"].lower() or key in b["author"].lower() or key in b["isbn"].lower()
+            ]
+        )
 
     def populateBookList(self, books):
-        while self.bookListScrollLayout.count():
-            child = self.bookListScrollLayout.takeAt(0)
-            if child.widget():
-                child.widget().deleteLater()
+        lay = self.bookListScrollLayout
+        while lay.count():
+            itm = lay.takeAt(0)
+            if itm.widget():
+                itm.widget().deleteLater()
 
         for book in books:
-            card = BookCardList(book["name"], book["description"])
-            self.bookListScrollLayout.addWidget(card)
+            item = BookListItem(book)
+            item.editRequested.connect(self.openEditDialog)
+            item.deleteRequested.connect(self.deleteBook)
+            lay.addWidget(item)
 
-        self.bookListScrollLayout.addStretch()
+        lay.addStretch()
+
+        n = len(books)
+        self.pageDescription.setText(
+            "No Book Available"
+            if n == 0
+            else "1 Book Available" if n == 1 else f"{n} Books Available"
+        )
+
+    # ---------------- dialogs ----------------
+    def openCreateDialog(self):
+        self._openDialog(mode="create")
+
+    def openEditDialog(self, book: dict):
+        self._openDialog(mode="edit", original=book)
+
+    def _openDialog(self, mode: str, original: dict | None = None):
+        dlg = (
+            BookFormDialog(self.mainWindow, book=original)
+            if mode == "edit"
+            else BookFormDialog(self.mainWindow)
+        )
+        if not dlg.exec():
+            return
+
+        form = dlg.getFormData()
+        isbn = form["isbn"]
+        rows = form["stock"]
+
+        # 1. stok
+        self.stockModel.replace_for_isbn(isbn, rows)
+
+        # 2. buku (stock = count saja)
+        record = {k: v for k, v in form.items() if k != "stock"}
+        record["stock"] = len(rows)
+        self.bookModel.upsert(isbn, record)
+
+        # 3. refresh
+        self.books = self.bookModel.getAll()
+        self.populateBookList(self.books)
+
+    # ---------------- delete ----------------
+    def deleteBook(self, book: dict):
+        if (
+            QMessageBox.question(
+                self.mainWindow,
+                "Confirm Delete",
+                f'Delete "{book["title"]}"?',
+                QMessageBox.Yes | QMessageBox.No,
+            )
+            == QMessageBox.No
+        ):
+            return
+
+        isbn = book["isbn"]
+        self.bookModel.delete(isbn)
+        self.stockModel.replace_for_isbn(isbn, [])
+
+        self.books = self.bookModel.getAll()
+        self.populateBookList(self.books)

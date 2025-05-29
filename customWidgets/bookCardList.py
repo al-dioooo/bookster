@@ -4,11 +4,11 @@ from PySide6.QtGui import QFont
 
 
 class BookCardList(QWidget):
-    def __init__(self, name, role, parent=None):
+    def __init__(self, title, author, parent=None):
         super().__init__(parent)
 
-        self.name = name
-        self.role = role
+        self.title = title
+        self.author = author
 
         self.initUI()
 
@@ -16,15 +16,15 @@ class BookCardList(QWidget):
         layout = QVBoxLayout(self)
         # layout.setContentsMargins(12, 12, 1, 0)
 
-        # Title (name)
-        title = QLabel(self.name)
+        # Title (title)
+        title = QLabel(self.title)
         titleFont = QFont()
         titleFont.setPointSize(16)
         titleFont.setFamilies([u"Poppins"])
         title.setFont(titleFont)
 
-        # Subtitle (role)
-        subtitle = QLabel(self.role)
+        # Subtitle (author)
+        subtitle = QLabel(self.author)
         subtitle.setStyleSheet("color: gray")
         subtitleFont = QFont()
         subtitleFont.setPointSize(14)

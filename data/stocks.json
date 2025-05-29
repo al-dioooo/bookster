@@ -1,0 +1,44 @@
+[
+    {
+        "sku": "SKU-0001",
+        "isbn": "978-1-2871-278051-6",
+        "status": "available",
+        "location": "Shelf A1"
+    },
+    {
+        "sku": "SKU-0002",
+        "isbn": "978-1-2871-278051-6",
+        "status": "borrowed",
+        "location": "User #24"
+    },
+    {
+        "sku": "SKU-0003",
+        "isbn": "978-1-2871-278051-6",
+        "status": "available",
+        "location": "Shelf A1"
+    },
+    {
+        "sku": "SKU-0004",
+        "isbn": "978-1-2871-278051-6",
+        "status": "reserved",
+        "location": "Front Desk"
+    },
+    {
+        "sku": "SKU-0005",
+        "isbn": "978-1-2871-278051-6",
+        "status": "available",
+        "location": "Shelf A1"
+    },
+    {
+        "sku": "SKU-0006",
+        "isbn": "978-1-2871-278051-6",
+        "status": "available",
+        "location": "Shelf A1"
+    },
+    {
+        "sku": "SKU-BARU",
+        "location": "Location Unknown",
+        "isbn": "ISBN-Arisuu",
+        "status": "available"
+    }
+]

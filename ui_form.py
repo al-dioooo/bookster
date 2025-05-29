@@ -25,6 +25,9 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(824, 624)
+        font = QFont()
+        font.setFamilies([u".AppleSystemUIFont"])
+        MainWindow.setFont(font)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout_2 = QHBoxLayout(self.centralwidget)
@@ -44,15 +47,15 @@ class Ui_MainWindow(object):
         self.titleLabel = QLabel(self.startPage)
         self.titleLabel.setObjectName(u"titleLabel")
         self.titleLabel.setMinimumSize(QSize(500, 0))
-        font = QFont()
-        font.setFamilies([u"Magic Retro"])
-        font.setPointSize(128)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
-        font.setStrikeOut(False)
-        font.setKerning(True)
-        self.titleLabel.setFont(font)
+        font1 = QFont()
+        font1.setFamilies([u"Magic Retro"])
+        font1.setPointSize(128)
+        font1.setBold(False)
+        font1.setItalic(False)
+        font1.setUnderline(False)
+        font1.setStrikeOut(False)
+        font1.setKerning(True)
+        self.titleLabel.setFont(font1)
         self.titleLabel.setStyleSheet(u"QLabel {\n"
 "	color: #3B82F6;\n"
 "}")
@@ -69,10 +72,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.mainButton = QPushButton(self.frame)
         self.mainButton.setObjectName(u"mainButton")
-        font1 = QFont()
-        font1.setFamilies([u"Poppins"])
-        font1.setPointSize(16)
-        self.mainButton.setFont(font1)
+        font2 = QFont()
+        font2.setFamilies([u"Poppins"])
+        font2.setPointSize(16)
+        self.mainButton.setFont(font2)
         self.mainButton.setStyleSheet(u"QPushButton {\n"
 "	border-radius: 12px;\n"
 "	background: #93C5FD;\n"
@@ -92,7 +95,7 @@ class Ui_MainWindow(object):
 
         self.loginButton = QPushButton(self.frame)
         self.loginButton.setObjectName(u"loginButton")
-        self.loginButton.setFont(font1)
+        self.loginButton.setFont(font2)
         self.loginButton.setMouseTracking(True)
         self.loginButton.setStyleSheet(u"QPushButton {\n"
 "	border-radius: 12px;\n"
@@ -143,10 +146,10 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.searchHistoryInput.sizePolicy().hasHeightForWidth())
         self.searchHistoryInput.setSizePolicy(sizePolicy1)
         self.searchHistoryInput.setMaximumSize(QSize(300, 16777215))
-        font2 = QFont()
-        font2.setFamilies([u"Poppins"])
-        font2.setPointSize(14)
-        self.searchHistoryInput.setFont(font2)
+        font3 = QFont()
+        font3.setFamilies([u"Poppins"])
+        font3.setPointSize(14)
+        self.searchHistoryInput.setFont(font3)
         self.searchHistoryInput.setStyleSheet(u"QLineEdit {\n"
 "	padding: 6px 12px;\n"
 "	border-radius: 12px;\n"
@@ -167,7 +170,7 @@ class Ui_MainWindow(object):
         self.addHistoryButton = QToolButton(self.frame_8)
         self.addHistoryButton.setObjectName(u"addHistoryButton")
         self.addHistoryButton.setMinimumSize(QSize(36, 36))
-        self.addHistoryButton.setFont(font1)
+        self.addHistoryButton.setFont(font2)
         self.addHistoryButton.setStyleSheet(u"QToolButton {\n"
 "	background: #93C5FD;\n"
 "	color: #FFF;\n"
@@ -198,10 +201,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
         self.userPageTitle_2 = QLabel(self.layoutWidget_4)
         self.userPageTitle_2.setObjectName(u"userPageTitle_2")
-        font3 = QFont()
-        font3.setFamilies([u"Magic Retro"])
-        font3.setPointSize(48)
-        self.userPageTitle_2.setFont(font3)
+        font4 = QFont()
+        font4.setFamilies([u"Magic Retro"])
+        font4.setPointSize(48)
+        self.userPageTitle_2.setFont(font4)
         self.userPageTitle_2.setStyleSheet(u"QLabel {\n"
 "	color: #3B82F6;\n"
 "}")
@@ -210,10 +213,10 @@ class Ui_MainWindow(object):
 
         self.userPageDescription_2 = QLabel(self.layoutWidget_4)
         self.userPageDescription_2.setObjectName(u"userPageDescription_2")
-        font4 = QFont()
-        font4.setFamilies([u"Poppins"])
-        font4.setPointSize(18)
-        self.userPageDescription_2.setFont(font4)
+        font5 = QFont()
+        font5.setFamilies([u"Poppins"])
+        font5.setPointSize(18)
+        self.userPageDescription_2.setFont(font5)
 
         self.verticalLayout_16.addWidget(self.userPageDescription_2)
 
@@ -237,7 +240,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.greetingsLabel = QLabel(self.frame_9)
         self.greetingsLabel.setObjectName(u"greetingsLabel")
-        self.greetingsLabel.setFont(font3)
+        self.greetingsLabel.setFont(font4)
         self.greetingsLabel.setStyleSheet(u"QLabel {\n"
 "	color: #3B82F6;\n"
 "}")
@@ -246,7 +249,7 @@ class Ui_MainWindow(object):
 
         self.roleLabel = QLabel(self.frame_9)
         self.roleLabel.setObjectName(u"roleLabel")
-        self.roleLabel.setFont(font4)
+        self.roleLabel.setFont(font5)
 
         self.verticalLayout_3.addWidget(self.roleLabel, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
@@ -259,7 +262,7 @@ class Ui_MainWindow(object):
 
         self.mainLogoutButton = QToolButton(self.frame_9)
         self.mainLogoutButton.setObjectName(u"mainLogoutButton")
-        self.mainLogoutButton.setFont(font1)
+        self.mainLogoutButton.setFont(font2)
         self.mainLogoutButton.setStyleSheet(u"QToolButton {\n"
 "	background: #93C5FD;\n"
 "	color: #FFF;\n"
@@ -332,7 +335,7 @@ class Ui_MainWindow(object):
 
         self.label_2 = QLabel(self.frame_2)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font1)
+        self.label_2.setFont(font2)
 
         self.verticalLayout_6.addWidget(self.label_2, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -376,7 +379,7 @@ class Ui_MainWindow(object):
 
         self.label_3 = QLabel(self.frame_3)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setFont(font1)
+        self.label_3.setFont(font2)
 
         self.verticalLayout_7.addWidget(self.label_3, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -420,7 +423,7 @@ class Ui_MainWindow(object):
 
         self.label_4 = QLabel(self.frame_4)
         self.label_4.setObjectName(u"label_4")
-        self.label_4.setFont(font1)
+        self.label_4.setFont(font2)
 
         self.verticalLayout_8.addWidget(self.label_4, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -441,10 +444,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.loginTitleLabel = QLabel(self.loginPage)
         self.loginTitleLabel.setObjectName(u"loginTitleLabel")
-        font5 = QFont()
-        font5.setFamilies([u"Magic Retro"])
-        font5.setPointSize(64)
-        self.loginTitleLabel.setFont(font5)
+        font6 = QFont()
+        font6.setFamilies([u"Magic Retro"])
+        font6.setPointSize(64)
+        self.loginTitleLabel.setFont(font6)
         self.loginTitleLabel.setStyleSheet(u"QLabel {\n"
 "	color: #3B82F6;\n"
 "}")
@@ -463,13 +466,13 @@ class Ui_MainWindow(object):
         self.usernameLabel.setObjectName(u"usernameLabel")
         self.usernameLabel.setMinimumSize(QSize(0, 0))
         self.usernameLabel.setMaximumSize(QSize(16777215, 20))
-        self.usernameLabel.setFont(font1)
+        self.usernameLabel.setFont(font2)
 
         self.verticalLayout_2.addWidget(self.usernameLabel, 0, Qt.AlignmentFlag.AlignBottom)
 
         self.usernameInput = QLineEdit(self.usernameAndPasswordFrame)
         self.usernameInput.setObjectName(u"usernameInput")
-        self.usernameInput.setFont(font1)
+        self.usernameInput.setFont(font2)
         self.usernameInput.setStyleSheet(u"QLineEdit {\n"
 "	padding: 12px;\n"
 "	border-radius: 12px;\n"
@@ -481,13 +484,13 @@ class Ui_MainWindow(object):
         self.passwordLabel = QLabel(self.usernameAndPasswordFrame)
         self.passwordLabel.setObjectName(u"passwordLabel")
         self.passwordLabel.setMaximumSize(QSize(16777215, 20))
-        self.passwordLabel.setFont(font1)
+        self.passwordLabel.setFont(font2)
 
         self.verticalLayout_2.addWidget(self.passwordLabel)
 
         self.passwordInput = QLineEdit(self.usernameAndPasswordFrame)
         self.passwordInput.setObjectName(u"passwordInput")
-        self.passwordInput.setFont(font1)
+        self.passwordInput.setFont(font2)
         self.passwordInput.setStyleSheet(u"QLineEdit {\n"
 "	padding: 12px;\n"
 "	border-radius: 12px;\n"
@@ -514,7 +517,7 @@ class Ui_MainWindow(object):
         self.submitLoginButton = QPushButton(self.submitLoginFrame)
         self.submitLoginButton.setObjectName(u"submitLoginButton")
         self.submitLoginButton.setMaximumSize(QSize(16777215, 16777215))
-        self.submitLoginButton.setFont(font1)
+        self.submitLoginButton.setFont(font2)
         self.submitLoginButton.setStyleSheet(u"QPushButton {\n"
 "	border-radius: 12px;\n"
 "	background: #3B82F6;\n"
@@ -583,7 +586,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.bookPageTitle = QLabel(self.bookManagementPage)
         self.bookPageTitle.setObjectName(u"bookPageTitle")
-        self.bookPageTitle.setFont(font3)
+        self.bookPageTitle.setFont(font4)
         self.bookPageTitle.setStyleSheet(u"QLabel {\n"
 "	color: #3B82F6;\n"
 "}")
@@ -592,7 +595,7 @@ class Ui_MainWindow(object):
 
         self.bookPageDescription = QLabel(self.bookManagementPage)
         self.bookPageDescription.setObjectName(u"bookPageDescription")
-        self.bookPageDescription.setFont(font4)
+        self.bookPageDescription.setFont(font5)
 
         self.verticalLayout_10.addWidget(self.bookPageDescription)
 
@@ -620,7 +623,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.searchBookInput.sizePolicy().hasHeightForWidth())
         self.searchBookInput.setSizePolicy(sizePolicy1)
         self.searchBookInput.setMaximumSize(QSize(300, 16777215))
-        self.searchBookInput.setFont(font2)
+        self.searchBookInput.setFont(font3)
         self.searchBookInput.setStyleSheet(u"QLineEdit {\n"
 "	padding: 6px 12px;\n"
 "	border-radius: 12px;\n"
@@ -641,7 +644,7 @@ class Ui_MainWindow(object):
         self.addBookButton = QToolButton(self.frame_6)
         self.addBookButton.setObjectName(u"addBookButton")
         self.addBookButton.setMinimumSize(QSize(36, 36))
-        self.addBookButton.setFont(font1)
+        self.addBookButton.setFont(font2)
         self.addBookButton.setStyleSheet(u"QToolButton {\n"
 "	background: #93C5FD;\n"
 "	color: #FFF;\n"
@@ -714,7 +717,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.userPageTitle = QLabel(self.userManagementPage)
         self.userPageTitle.setObjectName(u"userPageTitle")
-        self.userPageTitle.setFont(font3)
+        self.userPageTitle.setFont(font4)
         self.userPageTitle.setStyleSheet(u"QLabel {\n"
 "	color: #3B82F6;\n"
 "}")
@@ -723,7 +726,7 @@ class Ui_MainWindow(object):
 
         self.userPageDescription = QLabel(self.userManagementPage)
         self.userPageDescription.setObjectName(u"userPageDescription")
-        self.userPageDescription.setFont(font4)
+        self.userPageDescription.setFont(font5)
 
         self.verticalLayout_14.addWidget(self.userPageDescription)
 
@@ -751,7 +754,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.searchUserInput.sizePolicy().hasHeightForWidth())
         self.searchUserInput.setSizePolicy(sizePolicy1)
         self.searchUserInput.setMaximumSize(QSize(300, 16777215))
-        self.searchUserInput.setFont(font2)
+        self.searchUserInput.setFont(font3)
         self.searchUserInput.setStyleSheet(u"QLineEdit {\n"
 "	padding: 6px 12px;\n"
 "	border-radius: 12px;\n"
@@ -772,7 +775,7 @@ class Ui_MainWindow(object):
         self.addUserButton = QToolButton(self.frame_7)
         self.addUserButton.setObjectName(u"addUserButton")
         self.addUserButton.setMinimumSize(QSize(36, 36))
-        self.addUserButton.setFont(font1)
+        self.addUserButton.setFont(font2)
         self.addUserButton.setStyleSheet(u"QToolButton {\n"
 "	background: #93C5FD;\n"
 "	color: #FFF;\n"
@@ -820,7 +823,7 @@ class Ui_MainWindow(object):
         self.userListScrollArea.setWidgetResizable(True)
         self.userListScrollAreaWidgetContents = QWidget()
         self.userListScrollAreaWidgetContents.setObjectName(u"userListScrollAreaWidgetContents")
-        self.userListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 72, 16))
+        self.userListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 96, 26))
         self.verticalLayout_13 = QVBoxLayout(self.userListScrollAreaWidgetContents)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
@@ -846,7 +849,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

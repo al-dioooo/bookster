@@ -1,48 +1,61 @@
-from helpers.fileHelper import JsonFileHelper
+# pages/bookManagement/bookModel.py
+"""
+Model pembungkus DataReader untuk buku.
+- Menyimpan file JSON berisi list buku
+- Menyediakan add / update / delete / upsert / getAll
+"""
+
+from typing import Dict, List
+from helpers.dataReader import DataReader
 
 
 class BookModel:
-    def __init__(self, jsonPath="data/books.json"):
-        self.file = JsonFileHelper(jsonPath)
-        self.books = []
-        self.load()
+    def __init__(self, path: str = "data/books.json"):
+        self.reader = DataReader(path)
 
-    def load(self):
-        data = self.file.read()
-        # If empty JSON object {}, convert to empty list []
-        self.books = data if isinstance(data, list) else []
+    # ---------- read ----------
+    def getAll(self) -> List[Dict]:
+        """Return seluruh list buku (dict)."""
+        return self.reader.get()
 
-    def save(self):
-        self.file.write(self.books)
+    # ---------- internal helper ----------
+    def _writeAll(self, books: List[Dict]):
+        """Timpa file JSON secara atomik dengan list baru."""
+        self.reader.clearData()  # kosongkan isi file
+        for item in books:
+            self.reader.addItem(item)  # tulis lagi satu-persatu
+        self.reader.saveData()  # pastikan flush
 
-    def getAll(self):
-        return self.books
+    # ---------- add ----------
+    def add(self, record: Dict):
+        """Tambahkan buku baru (tidak cek duplikat)."""
+        self.reader.addItem(record)
+        self.reader.saveData()
 
-    def getById(self, bookId):
-        return next((book for book in self.books if book["id"] == bookId), None)
-
-    def add(self, bookData):
-        bookData["id"] = self._generateId()
-        self.books.append(bookData)
-        self.save()
-        return bookData
-
-    def update(self, bookId, newData):
-        for book in self.books:
-            if book["id"] == bookId:
-                book.update(newData)
-                self.save()
-                return book
-        return None
-
-    def delete(self, bookId):
-        originalLen = len(self.books)
-        self.books = [book for book in self.books if book["id"] != bookId]
-        if len(self.books) < originalLen:
-            self.save()
-            return True
+    # ---------- update ----------
+    def update(self, isbn: str, record: Dict) -> bool:
+        """
+        Ganti item yang ISBN-nya cocok.
+        Return True jika ditemukan & diganti; False jika tidak ada.
+        """
+        books = self.getAll()
+        for idx, item in enumerate(books):
+            if item.get("isbn") == isbn:
+                books[idx] = record
+                self._writeAll(books)
+                return True
         return False
 
-    def _generateId(self):
-        existing_ids = [book.get("id", 0) for book in self.books]
-        return max(existing_ids, default=0) + 1
+    # ---------- delete ----------
+    def delete(self, isbn: str):
+        """Hapus buku berdasarkan ISBN."""
+        books = [b for b in self.getAll() if b.get("isbn") != isbn]
+        self._writeAll(books)
+
+    # ---------- upsert ----------
+    def upsert(self, isbn: str, record: Dict):
+        """
+        Jika ISBN sudah ada → update, jika belum ada → add.
+        """
+        if not self.update(isbn, record):  # update() return False bila tak ditemukan
+            self.add(record)

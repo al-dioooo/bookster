@@ -1,31 +1,148 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QToolButton
-from PySide6.QtGui import QIcon
-from PySide6.QtCore import QSize, Qt
+from pathlib import Path
+from PySide6.QtCore import Qt, Signal, QSize
+from PySide6.QtGui import QFont, QIcon, QPixmap
+from PySide6.QtWidgets import (
+    QWidget,
+    QLabel,
+    QHBoxLayout,
+    QVBoxLayout,
+    QSpacerItem,
+    QSizePolicy,
+    QToolButton,
+)
+
+PLACEHOLDER = "assets/images/placeholder.png"
+THUMB_SIZE = QSize(75, 100)  # 3 : 4 thumbnail
 
 
 class BookListItem(QWidget):
+    """
+    Row widget with:
+      • cover thumbnail (3:4, border-radius)
+      • title & author (first line)
+      • ISBN & stock count (second line, smaller)
+      • Edit / Delete buttons
+
+    Signals:
+      editRequested(dict book)
+      deleteRequested(dict book)
+    """
+
+    editRequested = Signal(dict)
+    deleteRequested = Signal(dict)
+
     def __init__(self, book: dict, parent=None):
         super().__init__(parent)
         self.book = book
-        self.layout = QVBoxLayout(self)
-        self.labelTitle = QLabel(self.book["title"])
-        self.labelAuthor = QLabel(self.book["author"])
-        self.buttonDetails = QToolButton()
-        self.buttonDetails.setText("Details")
+        self.setupUI()
+        self.connectSignals()
 
-        # Add widgets to layout
-        self.layout.addWidget(self.labelTitle)
-        self.layout.addWidget(self.labelAuthor)
-        self.layout.addWidget(self.buttonDetails)
+    # ---------- UI ------------------------------------------------------
+    def setupUI(self):
+        root = QHBoxLayout(self)
+        root.setContentsMargins(8, 4, 8, 4)
+        root.setSpacing(10)
 
-        # Set layout
-        self.setLayout(self.layout)
-        # self.buttonDetails.clicked.connect(self.showDetails)
-        self.buttonDetails.setStyleSheet("background-color: lightblue;")
-        self.buttonDetails.setFixedSize(100, 30)
-        self.buttonDetails.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
-        self.buttonDetails.setIconSize(QSize(16, 16))
-        self.buttonDetails.setIcon(QIcon("assets/icons/details.svg"))
-        self.buttonDetails.setAutoRaise(True)
-        self.buttonDetails.setStyleSheet("QToolButton { background-color: lightblue; }")
-        self.buttonDetails.setCursor(Qt.PointingHandCursor)
+        # ── Cover thumbnail ────────────────────────────────────────────
+        coverLabel = QLabel()
+        coverLabel.setFixedSize(THUMB_SIZE)
+        coverLabel.setAlignment(Qt.AlignCenter)
+        coverLabel.setStyleSheet("border:3px solid #F5F5F5;border-radius:12px;")
+
+        cover_path = self.book.get("cover", "")
+        pix = (
+            QPixmap(cover_path)
+            if cover_path and Path(cover_path).exists()
+            else QPixmap(PLACEHOLDER)
+        )
+        coverLabel.setPixmap(
+            pix.scaled(
+                THUMB_SIZE, Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation
+            )
+        )
+
+        # ── Text block ─────────────────────────────────────────────────
+        # Fonts
+        fTitle = QFont("Poppins", 16, QFont.DemiBold)
+        fAuthor = QFont("Poppins", 12)
+        fDetail = QFont("Poppins", 11)
+
+        # Line-1: Title + Author
+        lblTitle = QLabel(self.book["title"])
+        lblTitle.setFont(fTitle)
+
+        lblAuthor = QLabel(f'by {self.book["author"]}')
+        lblAuthor.setFont(fAuthor)
+        lblAuthor.setStyleSheet("color: gray")
+
+        line1 = QWidget()
+        l1 = QHBoxLayout(line1)
+        l1.setContentsMargins(0, 0, 0, 0)
+        l1.setSpacing(4)
+        l1.addWidget(lblTitle)
+        l1.addWidget(lblAuthor)
+
+        # Line-2: ISBN + Stock
+        isbnText = self.book.get("isbn", "—")
+        stockCount = self.book.get("stock", 0)
+        lblIsbn = QLabel(f"ISBN: {isbnText}")
+        lblIsbn.setFont(fDetail)
+        lblIsbn.setStyleSheet("color: #6B7280")  # gray-500
+
+        lblStock = QLabel(f"Stock: {stockCount}")
+        lblStock.setFont(fDetail)
+        lblStock.setStyleSheet("color: #6B7280")
+
+        line2 = QWidget()
+        l2 = QHBoxLayout(line2)
+        l2.setContentsMargins(0, 0, 0, 0)
+        l2.setSpacing(12)
+        l2.addWidget(lblIsbn)
+        l2.addWidget(lblStock)
+
+        infoBox = QWidget()
+        v = QVBoxLayout(infoBox)
+        v.setContentsMargins(0, 0, 0, 0)
+        v.setSpacing(2)
+        v.addWidget(line1)
+        v.addWidget(line2)
+
+        # spacer
+        spacer = QSpacerItem(10, 10, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        # ── Buttons ────────────────────────────────────────────────────
+        self.btnEdit = QToolButton()
+        self.btnEdit.setIcon(QIcon("assets/icons/edit.svg"))
+        self.btnEdit.setIconSize(QSize(16, 16))
+        self.btnEdit.setMinimumSize(QSize(36, 36))
+        self.btnEdit.setCursor(Qt.PointingHandCursor)
+        self.btnEdit.setStyleSheet(
+            "QToolButton {background:#93C5FD;color:#FFF;border-radius:12px;"
+            "border:3px solid #DBEAFE;padding:3px 3px 3px 6px;}"
+            "QToolButton:hover {background:rgba(147,197,253,200);}"
+            "QToolButton:pressed {background:rgba(147,197,253,150);}"
+        )
+
+        self.btnDelete = QToolButton()
+        self.btnDelete.setIcon(QIcon("assets/icons/trash.svg"))
+        self.btnDelete.setIconSize(QSize(16, 16))
+        self.btnDelete.setMinimumSize(QSize(36, 36))
+        self.btnDelete.setCursor(Qt.PointingHandCursor)
+        self.btnDelete.setStyleSheet(
+            "QToolButton {background:#F87171;color:#FFF;border-radius:12px;"
+            "border:3px solid #FEE2E2;padding:3px 3px 3px 6px;}"
+            "QToolButton:hover {background:rgba(248,113,113,200);}"
+            "QToolButton:pressed {background:rgba(248,113,113,150);}"
+        )
+
+        # ── Assemble root layout ───────────────────────────────────────
+        root.addWidget(coverLabel)
+        root.addWidget(infoBox)
+        root.addItem(spacer)
+        root.addWidget(self.btnEdit)
+        root.addWidget(self.btnDelete)
+
+    # ---------- Signals -------------------------------------------------
+    def connectSignals(self):
+        self.btnEdit.clicked.connect(lambda: self.editRequested.emit(self.book))
+        self.btnDelete.clicked.connect(lambda: self.deleteRequested.emit(self.book))
