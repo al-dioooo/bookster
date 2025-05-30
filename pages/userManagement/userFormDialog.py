@@ -45,6 +45,6 @@ class UserFormDialog(QDialog, Ui_UserFormDialog):
             name=self.nameInput.text().strip(),
             username=self.usernameInput.text().strip(),
             password=self.passwordInput.text() or self.user.get("password", ""),
-            role=self.roleCombo.currentText(),
+            role=self.roleCombo.currentText().lower(),
         )
         return d

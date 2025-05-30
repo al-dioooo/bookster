@@ -19,7 +19,7 @@
    <string>Bookster</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_17">
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="minimumSize">
@@ -36,7 +36,7 @@
 }</string>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="startPage">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -162,62 +162,165 @@ QPushButton:pressed {
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="historyPage">
-       <widget class="QFrame" name="frame_8">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>180</y>
-          <width>728</width>
-          <height>64</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QFrame {
+      <widget class="QWidget" name="bookLendHistoryPage">
+       <layout class="QVBoxLayout" name="verticalLayout_18">
+        <item alignment="Qt::AlignmentFlag::AlignLeft">
+         <widget class="QFrame" name="frame_12">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QToolButton" name="bookLendHistoryBackButton">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+	background: #93C5FD;
+	color: #FFF;
+	border-radius: 12px;
+	border: 3px solid #DBEAFE;
+	padding: 3px 3px 3px 6px;
+}
+
+QToolButton:hover {
+	background: rgba(147, 197, 253, 200);
+}
+
+QToolButton:pressed {
+	background: rgba(147, 197, 253, 150);
+}
+
+QToolButton QLabel {
+	margin-left: 6px;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset theme="QIcon::ThemeIcon::GoPrevious"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_16">
+          <item>
+           <widget class="QLabel" name="bookLendHistoryPageTitle">
+            <property name="font">
+             <font>
+              <family>Magic Retro</family>
+              <pointsize>48</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+	color: #3B82F6;
+}</string>
+            </property>
+            <property name="text">
+             <string>Book Lend History</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="bookLendHistoryPageDescription">
+            <property name="font">
+             <font>
+              <family>Poppins</family>
+              <pointsize>18</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>3 Data Available</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_8">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QFrame {
 	margin:0;
 }</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLineEdit" name="searchHistoryInput">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-             <horstretch>1</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <property name="leftMargin">
+            <number>0</number>
            </property>
-           <property name="maximumSize">
-            <size>
-             <width>300</width>
-             <height>16777215</height>
-            </size>
+           <property name="rightMargin">
+            <number>0</number>
            </property>
-           <property name="font">
-            <font>
-             <family>Poppins</family>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLineEdit {
+           <item>
+            <widget class="QLineEdit" name="searchBookLendHistoryInput">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+               <horstretch>1</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>300</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Poppins</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
 	padding: 6px 12px;
 	border-radius: 12px;
 	border: 2px solid #E5E5E5;
@@ -226,44 +329,44 @@ QPushButton:pressed {
 QLineEdit:focus {
 	border: 2px solid #DBEAFE;
 }</string>
-           </property>
-           <property name="placeholderText">
-            <string>Search History Data</string>
-           </property>
-           <property name="clearButtonEnabled">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item alignment="Qt::AlignmentFlag::AlignRight">
-          <widget class="QToolButton" name="addHistoryButton">
-           <property name="minimumSize">
-            <size>
-             <width>36</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Poppins</family>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton {
+             </property>
+             <property name="placeholderText">
+              <string>Search History Data</string>
+             </property>
+             <property name="clearButtonEnabled">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item alignment="Qt::AlignmentFlag::AlignRight">
+            <widget class="QToolButton" name="borrowButton">
+             <property name="minimumSize">
+              <size>
+               <width>36</width>
+               <height>36</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Poppins</family>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
 	background: #93C5FD;
 	color: #FFF;
 	border-radius: 12px;
@@ -281,73 +384,69 @@ QToolButton:pressed {
 QToolButton QLabel {
 	margin-left: 6px;
 }</string>
-           </property>
-           <property name="text">
-            <string>Borrow</string>
-           </property>
-           <property name="toolButtonStyle">
-            <enum>Qt::ToolButtonStyle::ToolButtonTextBesideIcon</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget_4">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>14</y>
-          <width>728</width>
-          <height>156</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_16">
-         <item>
-          <widget class="QLabel" name="userPageTitle_2">
-           <property name="font">
-            <font>
-             <family>Magic Retro</family>
-             <pointsize>48</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: #3B82F6;
+             </property>
+             <property name="text">
+              <string>Borrow</string>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonStyle::ToolButtonTextBesideIcon</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QScrollArea" name="bookLendHistoryListScrollArea">
+          <property name="styleSheet">
+           <string notr="true">QScrollArea {
+	background: #FFF;
+	border-radius: 16px;
+	border: 2px solid #E5E5E5;
+	overflow: hidden;
+}
+
+QWidget {
+	background-color: transparent;
+}
+
+QScrollBar {
+	background-color: none
 }</string>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="bookLendHistoryListcrollAreaWidgetContents">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>724</width>
+             <height>189</height>
+            </rect>
            </property>
-           <property name="text">
-            <string>Loan History</string>
-           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_19">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="widget_3" native="true"/>
+            </item>
+           </layout>
           </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="userPageDescription_2">
-           <property name="font">
-            <font>
-             <family>Poppins</family>
-             <pointsize>18</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>3 Data Available</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="mainPage">
        <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -631,7 +730,7 @@ QToolButton QLabel {
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_8">
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
-               <widget class="QToolButton" name="historyLinkButton">
+               <widget class="QToolButton" name="bookLendHistoryLinkButton">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
                   <horstretch>0</horstretch>
@@ -693,7 +792,7 @@ QToolButton QLabel {
                  </font>
                 </property>
                 <property name="text">
-                 <string>History</string>
+                 <string>Lend History</string>
                 </property>
                </widget>
               </item>

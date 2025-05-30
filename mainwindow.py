@@ -9,6 +9,7 @@ from controllers.loginPageController import LoginPageController
 from controllers.dashboardPageController import DashboardPageController
 from controllers.bookManagementPageController import BookManagementPageController
 from controllers.userManagementPageController import UserManagementPageController
+from controllers.bookLendHistoryPageController import BookLendHistoryPageController
 
 
 class MainWindow(QMainWindow):
@@ -24,6 +25,7 @@ class MainWindow(QMainWindow):
         self.mainPage = self.findChild(QWidget, "mainPage")
         self.bookManagementPage = self.findChild(QWidget, "bookManagementPage")
         self.userManagementPage = self.findChild(QWidget, "userManagementPage")
+        self.bookLendHistoryPage = self.findChild(QWidget, "bookLendHistoryPage")
 
         # Controllers
         self.startPageController = StartPageController(self)
@@ -31,6 +33,7 @@ class MainWindow(QMainWindow):
         self.dashboardPageController = DashboardPageController(self)
         self.bookManagementPageController = BookManagementPageController(self)
         self.userManagementPageController = UserManagementPageController(self)
+        self.bookLendHistoryPageController = BookLendHistoryPageController(self)
 
 
 if __name__ == "__main__":

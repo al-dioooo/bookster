@@ -76,7 +76,7 @@ class Ui_UserFormDialog(object):
         self.frameButtons.setFrameShape(QFrame.Shape.StyledPanel)
         self.buttonLayout = QHBoxLayout(self.frameButtons)
         self.buttonLayout.setObjectName(u"buttonLayout")
-        self.buttonLayout.setContentsMargins(-1, -1, -1, 0)
+        self.buttonLayout.setContentsMargins(0, 0, 0, 0)
         self.hsp = QSpacerItem(0, 0, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.buttonLayout.addItem(self.hsp)
@@ -108,10 +108,11 @@ class Ui_UserFormDialog(object):
         self.nameInput.setPlaceholderText(QCoreApplication.translate("UserFormDialog", u"Name *", None))
         self.usernameInput.setPlaceholderText(QCoreApplication.translate("UserFormDialog", u"Username *", None))
         self.passwordInput.setPlaceholderText(QCoreApplication.translate("UserFormDialog", u"Password *", None))
-        self.roleCombo.setItemText(0, QCoreApplication.translate("UserFormDialog", u"administrator", None))
-        self.roleCombo.setItemText(1, QCoreApplication.translate("UserFormDialog", u"librarian", None))
-        self.roleCombo.setItemText(2, QCoreApplication.translate("UserFormDialog", u"user", None))
+        self.roleCombo.setItemText(0, QCoreApplication.translate("UserFormDialog", u"User", None))
+        self.roleCombo.setItemText(1, QCoreApplication.translate("UserFormDialog", u"Librarian", None))
+        self.roleCombo.setItemText(2, QCoreApplication.translate("UserFormDialog", u"Administrator", None))
 
+        self.roleCombo.setCurrentText(QCoreApplication.translate("UserFormDialog", u"User", None))
         self.cancelUserButton.setStyleSheet(QCoreApplication.translate("UserFormDialog", u"\n"
 "QPushButton {\n"
 "  border-radius:12px;\n"

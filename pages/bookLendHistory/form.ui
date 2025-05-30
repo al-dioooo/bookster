@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LoanHistoryPage</class>
+ <widget class="QWidget" name="LoanHistoryPage">
+  <layout class="QVBoxLayout" name="verticalLayout">
+
+   <!-- Top bar -->
+   <item>
+    <widget class="QFrame" name="topBarFrame">
+     <layout class="QHBoxLayout" name="topBarLayout">
+      <item><widget class="QLineEdit" name="searchLoanInput"><property name="placeholderText"><string>Search…</string></property></widget></item>
+      <item><spacer name="hSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+      <item><widget class="QToolButton" name="addLoanButton"><property name="text"><string>Borrow</string></property></widget></item>
+      <item><widget class="QToolButton" name="loanBackButton"><property name="text"><string>Back</string></property></widget></item>
+     </layout>
+    </widget>
+   </item>
+
+   <!-- Scroll list -->
+   <item>
+    <widget class="QScrollArea" name="loanListScrollArea">
+     <property name="widgetResizable"><bool>true</bool></property>
+     <widget class="QWidget" name="scrollContent">
+      <layout class="QVBoxLayout" name="loanListLayout"/>
+     </widget>
+    </widget>
+   </item>
+
+  </layout>
+ </widget>
+</ui>

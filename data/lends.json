@@ -1,0 +1,14 @@
+[
+    {
+        "isbn": "asdasdasd",
+        "sku": "SKU-0007",
+        "user": "Aliceee",
+        "borrowed": "2025-05-30",
+        "due": "2025-06-06",
+        "status": "returned",
+        "title": "Galaxy S23",
+        "author": "asdasd",
+        "cover": "data/images/books/57419b7c-7753-4be3-bb8e-1bb1476c8020.jpg",
+        "returned": "2025-05-30"
+    }
+]

@@ -21,22 +21,22 @@ class DashboardPageController:
         self.userManagementLinkButton = self._find(
             QToolButton, "userManagementLinkButton"
         )
-        self.historyLinkButton = self._find(QToolButton, "historyLinkButton")
+        self.bookLendHistoryLinkButton = self._find(QToolButton, "bookLendHistoryLinkButton")
         self.mainLogoutButton = self._find(QToolButton, "mainLogoutButton")
 
         self.bookManagementLinkButton.setIcon(QIcon("assets/icons/book.svg"))
         self.bookManagementLinkButton.setIconSize(QSize(64, 64))
         self.userManagementLinkButton.setIcon(QIcon("assets/icons/user.svg"))
         self.userManagementLinkButton.setIconSize(QSize(64, 64))
-        self.historyLinkButton.setIcon(QIcon("assets/icons/exchange.svg"))
-        self.historyLinkButton.setIconSize(QSize(64, 64))
+        self.bookLendHistoryLinkButton.setIcon(QIcon("assets/icons/exchange.svg"))
+        self.bookLendHistoryLinkButton.setIconSize(QSize(64, 64))
         self.mainLogoutButton.setIcon(QIcon("assets/icons/logout.svg"))
         self.mainLogoutButton.setIconSize(QSize(20, 20))
 
     def _connectSignals(self):
         self.bookManagementLinkButton.clicked.connect(self.goToBookManagementPage)
         self.userManagementLinkButton.clicked.connect(self.goToUserManagementPage)
-        self.historyLinkButton.clicked.connect(self.goToMainPage)
+        self.bookLendHistoryLinkButton.clicked.connect(self.goToBookLendHistoryPage)
         self.mainLogoutButton.clicked.connect(self.logout)
 
     def updateUserInfo(self, user):
@@ -57,8 +57,15 @@ class DashboardPageController:
         )
 
     def goToUserManagementPage(self):
+        self.mainWindow.setWindowTitle("Bookster - User Management")
         self.mainWindow.stackedWidget.setCurrentWidget(
             self.mainWindow.userManagementPage
+        )
+
+    def goToBookLendHistoryPage(self):
+        self.mainWindow.setWindowTitle("Bookster - Book Lend History")
+        self.mainWindow.stackedWidget.setCurrentWidget(
+            self.mainWindow.bookLendHistoryPage
         )
 
     def logout(self):

@@ -40,5 +40,11 @@
         "location": "Location Unknown",
         "isbn": "ISBN-Arisuu",
         "status": "available"
+    },
+    {
+        "sku": "SKU-0007",
+        "location": "Shelf A1",
+        "isbn": "asdasdasd",
+        "status": "available"
     }
 ]

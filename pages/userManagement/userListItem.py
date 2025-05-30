@@ -27,7 +27,7 @@ class UserListItem(QWidget):
 
         lblName = QLabel(self.user["name"])
         lblName.setFont(QFont("Poppins", 16, QFont.DemiBold))
-        lblRole = QLabel(f'({self.user["role"]})')
+        lblRole = QLabel(f'({self.user["role"].capitalize()})')
         lblRole.setFont(QFont("Poppins", 12))
         lblRole.setStyleSheet("color: gray")
 

@@ -30,8 +30,8 @@ class Ui_MainWindow(object):
         MainWindow.setFont(font)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.horizontalLayout_2 = QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.verticalLayout_17 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.stackedWidget = QStackedWidget(self.centralwidget)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setMinimumSize(QSize(800, 600))
@@ -120,11 +120,79 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.frame, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
 
         self.stackedWidget.addWidget(self.startPage)
-        self.historyPage = QWidget()
-        self.historyPage.setObjectName(u"historyPage")
-        self.frame_8 = QFrame(self.historyPage)
+        self.bookLendHistoryPage = QWidget()
+        self.bookLendHistoryPage.setObjectName(u"bookLendHistoryPage")
+        self.verticalLayout_18 = QVBoxLayout(self.bookLendHistoryPage)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.frame_12 = QFrame(self.bookLendHistoryPage)
+        self.frame_12.setObjectName(u"frame_12")
+        self.frame_12.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_12.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.frame_12)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.bookLendHistoryBackButton = QToolButton(self.frame_12)
+        self.bookLendHistoryBackButton.setObjectName(u"bookLendHistoryBackButton")
+        self.bookLendHistoryBackButton.setMinimumSize(QSize(40, 40))
+        self.bookLendHistoryBackButton.setStyleSheet(u"QToolButton {\n"
+"	background: #93C5FD;\n"
+"	color: #FFF;\n"
+"	border-radius: 12px;\n"
+"	border: 3px solid #DBEAFE;\n"
+"	padding: 3px 3px 3px 6px;\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"	background: rgba(147, 197, 253, 200);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"	background: rgba(147, 197, 253, 150);\n"
+"}\n"
+"\n"
+"QToolButton QLabel {\n"
+"	margin-left: 6px;\n"
+"}")
+        icon = QIcon(QIcon.fromTheme(QIcon.ThemeIcon.GoPrevious))
+        self.bookLendHistoryBackButton.setIcon(icon)
+
+        self.horizontalLayout_2.addWidget(self.bookLendHistoryBackButton)
+
+
+        self.verticalLayout_18.addWidget(self.frame_12, 0, Qt.AlignmentFlag.AlignLeft)
+
+        self.verticalLayout_16 = QVBoxLayout()
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.bookLendHistoryPageTitle = QLabel(self.bookLendHistoryPage)
+        self.bookLendHistoryPageTitle.setObjectName(u"bookLendHistoryPageTitle")
+        font3 = QFont()
+        font3.setFamilies([u"Magic Retro"])
+        font3.setPointSize(48)
+        self.bookLendHistoryPageTitle.setFont(font3)
+        self.bookLendHistoryPageTitle.setStyleSheet(u"QLabel {\n"
+"	color: #3B82F6;\n"
+"}")
+
+        self.verticalLayout_16.addWidget(self.bookLendHistoryPageTitle)
+
+        self.bookLendHistoryPageDescription = QLabel(self.bookLendHistoryPage)
+        self.bookLendHistoryPageDescription.setObjectName(u"bookLendHistoryPageDescription")
+        font4 = QFont()
+        font4.setFamilies([u"Poppins"])
+        font4.setPointSize(18)
+        self.bookLendHistoryPageDescription.setFont(font4)
+
+        self.verticalLayout_16.addWidget(self.bookLendHistoryPageDescription)
+
+        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_16.addItem(self.verticalSpacer_6)
+
+
+        self.verticalLayout_18.addLayout(self.verticalLayout_16)
+
+        self.frame_8 = QFrame(self.bookLendHistoryPage)
         self.frame_8.setObjectName(u"frame_8")
-        self.frame_8.setGeometry(QRect(20, 180, 728, 64))
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -138,19 +206,19 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6 = QHBoxLayout(self.frame_8)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(0, -1, 0, -1)
-        self.searchHistoryInput = QLineEdit(self.frame_8)
-        self.searchHistoryInput.setObjectName(u"searchHistoryInput")
+        self.searchBookLendHistoryInput = QLineEdit(self.frame_8)
+        self.searchBookLendHistoryInput.setObjectName(u"searchBookLendHistoryInput")
         sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
         sizePolicy1.setHorizontalStretch(1)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.searchHistoryInput.sizePolicy().hasHeightForWidth())
-        self.searchHistoryInput.setSizePolicy(sizePolicy1)
-        self.searchHistoryInput.setMaximumSize(QSize(300, 16777215))
-        font3 = QFont()
-        font3.setFamilies([u"Poppins"])
-        font3.setPointSize(14)
-        self.searchHistoryInput.setFont(font3)
-        self.searchHistoryInput.setStyleSheet(u"QLineEdit {\n"
+        sizePolicy1.setHeightForWidth(self.searchBookLendHistoryInput.sizePolicy().hasHeightForWidth())
+        self.searchBookLendHistoryInput.setSizePolicy(sizePolicy1)
+        self.searchBookLendHistoryInput.setMaximumSize(QSize(300, 16777215))
+        font5 = QFont()
+        font5.setFamilies([u"Poppins"])
+        font5.setPointSize(14)
+        self.searchBookLendHistoryInput.setFont(font5)
+        self.searchBookLendHistoryInput.setStyleSheet(u"QLineEdit {\n"
 "	padding: 6px 12px;\n"
 "	border-radius: 12px;\n"
 "	border: 2px solid #E5E5E5;\n"
@@ -159,19 +227,19 @@ class Ui_MainWindow(object):
 "QLineEdit:focus {\n"
 "	border: 2px solid #DBEAFE;\n"
 "}")
-        self.searchHistoryInput.setClearButtonEnabled(True)
+        self.searchBookLendHistoryInput.setClearButtonEnabled(True)
 
-        self.horizontalLayout_6.addWidget(self.searchHistoryInput)
+        self.horizontalLayout_6.addWidget(self.searchBookLendHistoryInput)
 
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer_3)
 
-        self.addHistoryButton = QToolButton(self.frame_8)
-        self.addHistoryButton.setObjectName(u"addHistoryButton")
-        self.addHistoryButton.setMinimumSize(QSize(36, 36))
-        self.addHistoryButton.setFont(font2)
-        self.addHistoryButton.setStyleSheet(u"QToolButton {\n"
+        self.borrowButton = QToolButton(self.frame_8)
+        self.borrowButton.setObjectName(u"borrowButton")
+        self.borrowButton.setMinimumSize(QSize(36, 36))
+        self.borrowButton.setFont(font2)
+        self.borrowButton.setStyleSheet(u"QToolButton {\n"
 "	background: #93C5FD;\n"
 "	color: #FFF;\n"
 "	border-radius: 12px;\n"
@@ -189,42 +257,46 @@ class Ui_MainWindow(object):
 "QToolButton QLabel {\n"
 "	margin-left: 6px;\n"
 "}")
-        self.addHistoryButton.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
+        self.borrowButton.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
 
-        self.horizontalLayout_6.addWidget(self.addHistoryButton, 0, Qt.AlignmentFlag.AlignRight)
+        self.horizontalLayout_6.addWidget(self.borrowButton, 0, Qt.AlignmentFlag.AlignRight)
 
-        self.layoutWidget_4 = QWidget(self.historyPage)
-        self.layoutWidget_4.setObjectName(u"layoutWidget_4")
-        self.layoutWidget_4.setGeometry(QRect(20, 14, 728, 156))
-        self.verticalLayout_16 = QVBoxLayout(self.layoutWidget_4)
-        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
-        self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
-        self.userPageTitle_2 = QLabel(self.layoutWidget_4)
-        self.userPageTitle_2.setObjectName(u"userPageTitle_2")
-        font4 = QFont()
-        font4.setFamilies([u"Magic Retro"])
-        font4.setPointSize(48)
-        self.userPageTitle_2.setFont(font4)
-        self.userPageTitle_2.setStyleSheet(u"QLabel {\n"
-"	color: #3B82F6;\n"
+
+        self.verticalLayout_18.addWidget(self.frame_8)
+
+        self.bookLendHistoryListScrollArea = QScrollArea(self.bookLendHistoryPage)
+        self.bookLendHistoryListScrollArea.setObjectName(u"bookLendHistoryListScrollArea")
+        self.bookLendHistoryListScrollArea.setStyleSheet(u"QScrollArea {\n"
+"	background: #FFF;\n"
+"	border-radius: 16px;\n"
+"	border: 2px solid #E5E5E5;\n"
+"	overflow: hidden;\n"
+"}\n"
+"\n"
+"QWidget {\n"
+"	background-color: transparent;\n"
+"}\n"
+"\n"
+"QScrollBar {\n"
+"	background-color: none\n"
 "}")
+        self.bookLendHistoryListScrollArea.setWidgetResizable(True)
+        self.bookLendHistoryListcrollAreaWidgetContents = QWidget()
+        self.bookLendHistoryListcrollAreaWidgetContents.setObjectName(u"bookLendHistoryListcrollAreaWidgetContents")
+        self.bookLendHistoryListcrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 189))
+        self.verticalLayout_19 = QVBoxLayout(self.bookLendHistoryListcrollAreaWidgetContents)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.verticalLayout_19.setContentsMargins(0, 0, 0, 0)
+        self.widget_3 = QWidget(self.bookLendHistoryListcrollAreaWidgetContents)
+        self.widget_3.setObjectName(u"widget_3")
 
-        self.verticalLayout_16.addWidget(self.userPageTitle_2)
+        self.verticalLayout_19.addWidget(self.widget_3)
 
-        self.userPageDescription_2 = QLabel(self.layoutWidget_4)
-        self.userPageDescription_2.setObjectName(u"userPageDescription_2")
-        font5 = QFont()
-        font5.setFamilies([u"Poppins"])
-        font5.setPointSize(18)
-        self.userPageDescription_2.setFont(font5)
+        self.bookLendHistoryListScrollArea.setWidget(self.bookLendHistoryListcrollAreaWidgetContents)
 
-        self.verticalLayout_16.addWidget(self.userPageDescription_2)
+        self.verticalLayout_18.addWidget(self.bookLendHistoryListScrollArea)
 
-        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.verticalLayout_16.addItem(self.verticalSpacer_6)
-
-        self.stackedWidget.addWidget(self.historyPage)
+        self.stackedWidget.addWidget(self.bookLendHistoryPage)
         self.mainPage = QWidget()
         self.mainPage.setObjectName(u"mainPage")
         self.verticalLayout_9 = QVBoxLayout(self.mainPage)
@@ -240,7 +312,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.greetingsLabel = QLabel(self.frame_9)
         self.greetingsLabel.setObjectName(u"greetingsLabel")
-        self.greetingsLabel.setFont(font4)
+        self.greetingsLabel.setFont(font3)
         self.greetingsLabel.setStyleSheet(u"QLabel {\n"
 "	color: #3B82F6;\n"
 "}")
@@ -249,7 +321,7 @@ class Ui_MainWindow(object):
 
         self.roleLabel = QLabel(self.frame_9)
         self.roleLabel.setObjectName(u"roleLabel")
-        self.roleLabel.setFont(font5)
+        self.roleLabel.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.roleLabel, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
@@ -392,14 +464,14 @@ class Ui_MainWindow(object):
         self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_8 = QVBoxLayout(self.frame_4)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.historyLinkButton = QToolButton(self.frame_4)
-        self.historyLinkButton.setObjectName(u"historyLinkButton")
-        sizePolicy2.setHeightForWidth(self.historyLinkButton.sizePolicy().hasHeightForWidth())
-        self.historyLinkButton.setSizePolicy(sizePolicy2)
-        self.historyLinkButton.setMinimumSize(QSize(150, 150))
-        self.historyLinkButton.setMaximumSize(QSize(150, 150))
-        self.historyLinkButton.setBaseSize(QSize(150, 150))
-        self.historyLinkButton.setStyleSheet(u"QToolButton {\n"
+        self.bookLendHistoryLinkButton = QToolButton(self.frame_4)
+        self.bookLendHistoryLinkButton.setObjectName(u"bookLendHistoryLinkButton")
+        sizePolicy2.setHeightForWidth(self.bookLendHistoryLinkButton.sizePolicy().hasHeightForWidth())
+        self.bookLendHistoryLinkButton.setSizePolicy(sizePolicy2)
+        self.bookLendHistoryLinkButton.setMinimumSize(QSize(150, 150))
+        self.bookLendHistoryLinkButton.setMaximumSize(QSize(150, 150))
+        self.bookLendHistoryLinkButton.setBaseSize(QSize(150, 150))
+        self.bookLendHistoryLinkButton.setStyleSheet(u"QToolButton {\n"
 "	background: #93C5FD;\n"
 "	color: #FFF;\n"
 "	border-radius: 12px;\n"
@@ -417,9 +489,9 @@ class Ui_MainWindow(object):
 "QToolButton QLabel {\n"
 "	margin-left: 6px;\n"
 "}")
-        self.historyLinkButton.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonIconOnly)
+        self.bookLendHistoryLinkButton.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonIconOnly)
 
-        self.verticalLayout_8.addWidget(self.historyLinkButton, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.verticalLayout_8.addWidget(self.bookLendHistoryLinkButton, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.label_4 = QLabel(self.frame_4)
         self.label_4.setObjectName(u"label_4")
@@ -574,7 +646,6 @@ class Ui_MainWindow(object):
 "QToolButton QLabel {\n"
 "	margin-left: 6px;\n"
 "}")
-        icon = QIcon(QIcon.fromTheme(QIcon.ThemeIcon.GoPrevious))
         self.bookManagementBackButton.setIcon(icon)
 
         self.horizontalLayout_8.addWidget(self.bookManagementBackButton)
@@ -586,7 +657,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.bookPageTitle = QLabel(self.bookManagementPage)
         self.bookPageTitle.setObjectName(u"bookPageTitle")
-        self.bookPageTitle.setFont(font4)
+        self.bookPageTitle.setFont(font3)
         self.bookPageTitle.setStyleSheet(u"QLabel {\n"
 "	color: #3B82F6;\n"
 "}")
@@ -595,7 +666,7 @@ class Ui_MainWindow(object):
 
         self.bookPageDescription = QLabel(self.bookManagementPage)
         self.bookPageDescription.setObjectName(u"bookPageDescription")
-        self.bookPageDescription.setFont(font5)
+        self.bookPageDescription.setFont(font4)
 
         self.verticalLayout_10.addWidget(self.bookPageDescription)
 
@@ -623,7 +694,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.searchBookInput.sizePolicy().hasHeightForWidth())
         self.searchBookInput.setSizePolicy(sizePolicy1)
         self.searchBookInput.setMaximumSize(QSize(300, 16777215))
-        self.searchBookInput.setFont(font3)
+        self.searchBookInput.setFont(font5)
         self.searchBookInput.setStyleSheet(u"QLineEdit {\n"
 "	padding: 6px 12px;\n"
 "	border-radius: 12px;\n"
@@ -753,7 +824,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.userPageTitle = QLabel(self.userManagementPage)
         self.userPageTitle.setObjectName(u"userPageTitle")
-        self.userPageTitle.setFont(font4)
+        self.userPageTitle.setFont(font3)
         self.userPageTitle.setStyleSheet(u"QLabel {\n"
 "	color: #3B82F6;\n"
 "}")
@@ -762,7 +833,7 @@ class Ui_MainWindow(object):
 
         self.userPageDescription = QLabel(self.userManagementPage)
         self.userPageDescription.setObjectName(u"userPageDescription")
-        self.userPageDescription.setFont(font5)
+        self.userPageDescription.setFont(font4)
 
         self.verticalLayout_14.addWidget(self.userPageDescription)
 
@@ -790,7 +861,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.searchUserInput.sizePolicy().hasHeightForWidth())
         self.searchUserInput.setSizePolicy(sizePolicy1)
         self.searchUserInput.setMaximumSize(QSize(300, 16777215))
-        self.searchUserInput.setFont(font3)
+        self.searchUserInput.setFont(font5)
         self.searchUserInput.setStyleSheet(u"QLineEdit {\n"
 "	padding: 6px 12px;\n"
 "	border-radius: 12px;\n"
@@ -879,13 +950,13 @@ class Ui_MainWindow(object):
 
         self.stackedWidget.addWidget(self.userManagementPage)
 
-        self.horizontalLayout_2.addWidget(self.stackedWidget)
+        self.verticalLayout_17.addWidget(self.stackedWidget)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -896,10 +967,11 @@ class Ui_MainWindow(object):
         self.titleLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Bookster</p></body></html>", None))
         self.mainButton.setText(QCoreApplication.translate("MainWindow", u"Main", None))
         self.loginButton.setText(QCoreApplication.translate("MainWindow", u"Login", None))
-        self.searchHistoryInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search History Data", None))
-        self.addHistoryButton.setText(QCoreApplication.translate("MainWindow", u"Borrow", None))
-        self.userPageTitle_2.setText(QCoreApplication.translate("MainWindow", u"Loan History", None))
-        self.userPageDescription_2.setText(QCoreApplication.translate("MainWindow", u"3 Data Available", None))
+        self.bookLendHistoryBackButton.setText("")
+        self.bookLendHistoryPageTitle.setText(QCoreApplication.translate("MainWindow", u"Book Lend History", None))
+        self.bookLendHistoryPageDescription.setText(QCoreApplication.translate("MainWindow", u"3 Data Available", None))
+        self.searchBookLendHistoryInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search History Data", None))
+        self.borrowButton.setText(QCoreApplication.translate("MainWindow", u"Borrow", None))
         self.greetingsLabel.setText(QCoreApplication.translate("MainWindow", u"Hey, there!", None))
         self.roleLabel.setText(QCoreApplication.translate("MainWindow", u"Role", None))
         self.mainLogoutButton.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
@@ -907,8 +979,8 @@ class Ui_MainWindow(object):
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Book", None))
         self.userManagementLinkButton.setText(QCoreApplication.translate("MainWindow", u"User", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"User", None))
-        self.historyLinkButton.setText(QCoreApplication.translate("MainWindow", u"History", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"History", None))
+        self.bookLendHistoryLinkButton.setText(QCoreApplication.translate("MainWindow", u"History", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Lend History", None))
         self.loginTitleLabel.setText(QCoreApplication.translate("MainWindow", u"Login", None))
         self.usernameLabel.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.passwordLabel.setText(QCoreApplication.translate("MainWindow", u"Password", None))

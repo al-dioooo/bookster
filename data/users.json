@@ -19,5 +19,12 @@
         "username": "arisu",
         "password": "aldio1234",
         "role": "user"
+    },
+    {
+        "name": "Saa",
+        "username": "saminbluu",
+        "password": "aldio1234",
+        "role": "administrator",
+        "id": 4
     }
 ]

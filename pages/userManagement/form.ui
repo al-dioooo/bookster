@@ -74,19 +74,22 @@
    </item>
    <item>
     <widget class="QComboBox" name="roleCombo">
+     <property name="currentText">
+      <string>User</string>
+     </property>
      <item>
       <property name="text">
-       <string>administrator</string>
+       <string>User</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>librarian</string>
+       <string>Librarian</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>user</string>
+       <string>Administrator</string>
       </property>
      </item>
     </widget>
@@ -110,6 +113,15 @@
       <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <layout class="QHBoxLayout" name="buttonLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
       <property name="bottomMargin">
        <number>0</number>
       </property>
