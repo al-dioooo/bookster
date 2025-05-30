@@ -713,7 +713,14 @@ class Ui_MainWindow(object):
         self.userManagementPage.setObjectName(u"userManagementPage")
         self.verticalLayout_15 = QVBoxLayout(self.userManagementPage)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
-        self.userManagementBackButton = QToolButton(self.userManagementPage)
+        self.frame_11 = QFrame(self.userManagementPage)
+        self.frame_11.setObjectName(u"frame_11")
+        self.frame_11.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_11.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.frame_11)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.userManagementBackButton = QToolButton(self.frame_11)
         self.userManagementBackButton.setObjectName(u"userManagementBackButton")
         self.userManagementBackButton.setMinimumSize(QSize(40, 40))
         self.userManagementBackButton.setStyleSheet(u"QToolButton {\n"
@@ -737,7 +744,10 @@ class Ui_MainWindow(object):
 "}")
         self.userManagementBackButton.setIcon(icon)
 
-        self.verticalLayout_15.addWidget(self.userManagementBackButton)
+        self.horizontalLayout_9.addWidget(self.userManagementBackButton, 0, Qt.AlignmentFlag.AlignLeft)
+
+
+        self.verticalLayout_15.addWidget(self.frame_11, 0, Qt.AlignmentFlag.AlignLeft)
 
         self.verticalLayout_14 = QVBoxLayout()
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
@@ -849,7 +859,7 @@ class Ui_MainWindow(object):
         self.userListScrollArea.setWidgetResizable(True)
         self.userListScrollAreaWidgetContents = QWidget()
         self.userListScrollAreaWidgetContents.setObjectName(u"userListScrollAreaWidgetContents")
-        self.userListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 234))
+        self.userListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 226))
         self.verticalLayout_13 = QVBoxLayout(self.userListScrollAreaWidgetContents)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)

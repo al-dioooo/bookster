@@ -25,13 +25,21 @@ class UserManagementPageController:
         self.listLayout = self.listArea.widget().layout()
         self.searchBox = self._f(QLineEdit, "searchUserInput")
         self.addBtn = self._f(QToolButton, "addUserButton")
+        self.backButton = self._f(QToolButton, "userManagementBackButton")
 
         self.addBtn.setIcon(QIcon("assets/icons/plus.svg"))
         self.addBtn.setIconSize(QSize(20, 20))
+        self.backButton.setIcon(QIcon("assets/icons/arrow-narrow-left.svg"))
+        self.backButton.setIconSize(QSize(20, 20))
 
     # ---------- Signals ----------
     def connectSignals(self):
         self.searchBox.textChanged.connect(self.onSearch)
+        self.backButton.clicked.connect(
+            lambda: self.mainWindow.stackedWidget.setCurrentWidget(
+                self.mainWindow.mainPage
+            )
+        )
         self.addBtn.clicked.connect(self.createUser)
 
     # ---------- helpers ----------

@@ -42,12 +42,26 @@ class UserListItem(QWidget):
         self.btnEdit = QToolButton()
         self.btnEdit.setIcon(QIcon("assets/icons/edit.svg"))
         self.btnEdit.setIconSize(QSize(16, 16))
+        self.btnEdit.setMinimumSize(QSize(36, 36))
         self.btnEdit.setCursor(Qt.PointingHandCursor)
+        self.btnEdit.setStyleSheet(
+            "QToolButton {background:#93C5FD;color:#FFF;border-radius:12px;"
+            "border:3px solid #DBEAFE;padding:3px 3px 3px 6px;}"
+            "QToolButton:hover {background:rgba(147,197,253,200);}"
+            "QToolButton:pressed {background:rgba(147,197,253,150);}"
+        )
 
         self.btnDelete = QToolButton()
         self.btnDelete.setIcon(QIcon("assets/icons/trash.svg"))
         self.btnDelete.setIconSize(QSize(16, 16))
+        self.btnDelete.setMinimumSize(QSize(36, 36))
         self.btnDelete.setCursor(Qt.PointingHandCursor)
+        self.btnDelete.setStyleSheet(
+            "QToolButton {background:#F87171;color:#FFF;border-radius:12px;"
+            "border:3px solid #FEE2E2;padding:3px 3px 3px 6px;}"
+            "QToolButton:hover {background:rgba(248,113,113,200);}"
+            "QToolButton:pressed {background:rgba(248,113,113,150);}"
+        )
 
         lay.addWidget(info)
         lay.addItem(spacer)
