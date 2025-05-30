@@ -57,7 +57,7 @@ class BookFormDialog(QDialog, Ui_Dialog):
     def connectSignals(self):
         self.createBookButton.clicked.connect(self.accept)
         self.cancelBookButton.clicked.connect(self.reject)
-        self.addStockButton.clicked.connect(self.openStockDialog)
+        self.stockListButton.clicked.connect(self.openStockDialog)
         self.toolButton.clicked.connect(self.uploadCover)  # ← upload image
 
     # ---------- Image upload ----------

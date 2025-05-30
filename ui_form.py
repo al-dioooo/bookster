@@ -713,6 +713,32 @@ class Ui_MainWindow(object):
         self.userManagementPage.setObjectName(u"userManagementPage")
         self.verticalLayout_15 = QVBoxLayout(self.userManagementPage)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.userManagementBackButton = QToolButton(self.userManagementPage)
+        self.userManagementBackButton.setObjectName(u"userManagementBackButton")
+        self.userManagementBackButton.setMinimumSize(QSize(40, 40))
+        self.userManagementBackButton.setStyleSheet(u"QToolButton {\n"
+"	background: #93C5FD;\n"
+"	color: #FFF;\n"
+"	border-radius: 12px;\n"
+"	border: 3px solid #DBEAFE;\n"
+"	padding: 3px 3px 3px 6px;\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"	background: rgba(147, 197, 253, 200);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"	background: rgba(147, 197, 253, 150);\n"
+"}\n"
+"\n"
+"QToolButton QLabel {\n"
+"	margin-left: 6px;\n"
+"}")
+        self.userManagementBackButton.setIcon(icon)
+
+        self.verticalLayout_15.addWidget(self.userManagementBackButton)
+
         self.verticalLayout_14 = QVBoxLayout()
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.userPageTitle = QLabel(self.userManagementPage)
@@ -823,7 +849,7 @@ class Ui_MainWindow(object):
         self.userListScrollArea.setWidgetResizable(True)
         self.userListScrollAreaWidgetContents = QWidget()
         self.userListScrollAreaWidgetContents.setObjectName(u"userListScrollAreaWidgetContents")
-        self.userListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 96, 26))
+        self.userListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 234))
         self.verticalLayout_13 = QVBoxLayout(self.userListScrollAreaWidgetContents)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
@@ -849,7 +875,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(5)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -882,6 +908,7 @@ class Ui_MainWindow(object):
         self.bookPageDescription.setText(QCoreApplication.translate("MainWindow", u"18 Books Available", None))
         self.searchBookInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Book Data", None))
         self.addBookButton.setText(QCoreApplication.translate("MainWindow", u"Add Book", None))
+        self.userManagementBackButton.setText("")
         self.userPageTitle.setText(QCoreApplication.translate("MainWindow", u"User", None))
         self.userPageDescription.setText(QCoreApplication.translate("MainWindow", u"18 User Available", None))
         self.searchUserInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search User Data", None))

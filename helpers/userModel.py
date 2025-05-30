@@ -1,48 +1,41 @@
-from fileHelper import JsonFileHelper
+from typing import Dict, List
+from helpers.dataReader import DataReader
 
 
 class UserModel:
-    def __init__(self, jsonPath="data/users.json"):
-        self.file = JsonFileHelper(jsonPath)
-        self.users = []
-        self.load()
+    """CRUD wrapper for data/users.json."""
 
-    def load(self):
-        data = self.file.read()
-        # If empty JSON object {}, convert to empty list []
-        self.users = data if isinstance(data, list) else []
+    def __init__(self, path: str = "data/users.json"):
+        self.reader = DataReader(path)
 
-    def save(self):
-        self.file.write(self.users)
+    # ---------- read ----------
+    def all(self) -> List[Dict]:
+        return self.reader.get()
 
-    def getAll(self):
-        return self.users
+    # ---------- helper ----------
+    def _rewrite(self, rows: List[Dict]):
+        self.reader.clearData()
+        for r in rows:
+            self.reader.addItem(r)
+        self.reader.saveData()
 
-    def getById(self, userId):
-        return next((user for user in self.users if user["id"] == userId), None)
+    # ---------- upsert (by id) ----------
+    def upsert(self, record: Dict):
+        uid = record["id"]
+        rows = self.all()
+        for i, row in enumerate(rows):
+            if row["id"] == uid:
+                rows[i] = record
+                self._rewrite(rows)
+                return
+        rows.append(record)
+        self._rewrite(rows)
 
-    def add(self, userData):
-        userData["id"] = self._generateId()
-        self.users.append(userData)
-        self.save()
-        return userData
+    # ---------- delete ----------
+    def delete(self, uid: int):
+        self._rewrite([r for r in self.all() if r["id"] != uid])
 
-    def update(self, userId, newData):
-        for user in self.users:
-            if user["id"] == userId:
-                user.update(newData)
-                self.save()
-                return user
-        return None
-
-    def delete(self, userId):
-        originalLen = len(self.users)
-        self.users = [user for user in self.users if user["id"] != userId]
-        if len(self.users) < originalLen:
-            self.save()
-            return True
-        return False
-
-    def _generateId(self):
-        existing_ids = [user.get("id", 0) for user in self.users]
-        return max(existing_ids, default=0) + 1
+    # ---------- next id ----------
+    def next_id(self) -> int:
+        ids = [r["id"] for r in self.all()]
+        return max(ids, default=0) + 1

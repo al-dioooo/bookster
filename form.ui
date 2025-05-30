@@ -36,7 +36,7 @@
 }</string>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="startPage">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -1221,6 +1221,67 @@ QScrollBar {
       </widget>
       <widget class="QWidget" name="userManagementPage">
        <layout class="QVBoxLayout" name="verticalLayout_15">
+        <item alignment="Qt::AlignmentFlag::AlignLeft">
+         <widget class="QFrame" name="frame_11">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item alignment="Qt::AlignmentFlag::AlignLeft">
+            <widget class="QToolButton" name="userManagementBackButton">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+	background: #93C5FD;
+	color: #FFF;
+	border-radius: 12px;
+	border: 3px solid #DBEAFE;
+	padding: 3px 3px 3px 6px;
+}
+
+QToolButton:hover {
+	background: rgba(147, 197, 253, 200);
+}
+
+QToolButton:pressed {
+	background: rgba(147, 197, 253, 150);
+}
+
+QToolButton QLabel {
+	margin-left: 6px;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset theme="QIcon::ThemeIcon::GoPrevious"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_14">
           <item>
@@ -1425,8 +1486,8 @@ QScrollBar {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>96</width>
-             <height>26</height>
+             <width>724</width>
+             <height>226</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_13">

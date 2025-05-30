@@ -29,10 +29,17 @@ class Ui_Dialog(object):
         self.dialogVerticalLayout.setObjectName(u"dialogVerticalLayout")
         self.scrollArea = QScrollArea(Dialog)
         self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setStyleSheet(u"")
+        self.scrollArea.setFrameShape(QFrame.Shape.NoFrame)
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 694, 903))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 696, 903))
+        self.scrollAreaWidgetContents.setStyleSheet(u"QWidget#scrollAreaWidgetContents {\n"
+"	background-color: #FFF;\n"
+"	border-radius: 16px;\n"
+"	overflow: hidden;\n"
+"}")
         self.verticalLayout_12 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
         self.bookFormDialogTitle = QLabel(self.scrollAreaWidgetContents)
@@ -75,9 +82,9 @@ class Ui_Dialog(object):
         self.bookCoverPlaceholder.setStyleSheet(u"image: url(:/assets/images/placeholder.png);\n"
 "QLabel {\n"
 "  border-radius: 12px;\n"
-"  border: 3px solid #DBEAFE;\n"
+"  border: 3px solid #F5F5F5;\n"
 "}")
-        self.bookCoverPlaceholder.setScaledContents(True)
+        self.bookCoverPlaceholder.setScaledContents(False)
 
         self.verticalLayout_11.addWidget(self.bookCoverPlaceholder)
 
@@ -86,19 +93,16 @@ class Ui_Dialog(object):
         self.toolButton.setMinimumSize(QSize(36, 36))
         font1 = QFont()
         font1.setFamilies([u"Poppins"])
-        font1.setPointSize(16)
+        font1.setPointSize(13)
         self.toolButton.setFont(font1)
         self.toolButton.setStyleSheet(u"QToolButton {\n"
-"  background: #93C5FD; color: #FFF;\n"
-"  border-radius: 12px; border: 3px solid #DBEAFE;\n"
-"  padding: 3px 3px 3px 6px;\n"
+"  border-radius: 12px; background: #3B82F6; color: #FFF; padding: 6px;\n"
 "}\n"
-"QToolButton:hover   { background: rgba(147,197,253,200); }\n"
-"QToolButton:pressed { background: rgba(147,197,253,150); }\n"
-"QToolButton QLabel  { margin-left: 6px; }")
+"QToolButton:hover   { background: rgba(59,130,246,200); }\n"
+"QToolButton:pressed { background: rgba(59,130,246,150); }")
         self.toolButton.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
 
-        self.verticalLayout_11.addWidget(self.toolButton)
+        self.verticalLayout_11.addWidget(self.toolButton, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -337,24 +341,24 @@ class Ui_Dialog(object):
         self.cancelBookButton.setMinimumSize(QSize(100, 0))
         self.cancelBookButton.setFont(font2)
         self.cancelBookButton.setStyleSheet(u"QPushButton {\n"
-"  border-radius: 12px; background: #FFF; padding: 6px;\n"
+"  border-radius: 12px; background: #E5E5E5; padding: 6px;\n"
 "}\n"
-"QPushButton:hover   { background: rgba(255,255,255,200); }\n"
-"QPushButton:pressed { background: rgba(255,255,255,150); }")
+"QPushButton:hover   { background: rgba(229,229,229,200); }\n"
+"QPushButton:pressed { background: rgba(229,229,229,150); }")
 
         self.horizontalLayout_2.addWidget(self.cancelBookButton)
 
-        self.addStockButton = QPushButton(self.frame_11)
-        self.addStockButton.setObjectName(u"addStockButton")
-        self.addStockButton.setMinimumSize(QSize(100, 0))
-        self.addStockButton.setFont(font2)
-        self.addStockButton.setStyleSheet(u"QPushButton {\n"
-"  border-radius: 12px; background: #FFF; padding: 6px;\n"
+        self.stockListButton = QPushButton(self.frame_11)
+        self.stockListButton.setObjectName(u"stockListButton")
+        self.stockListButton.setMinimumSize(QSize(100, 0))
+        self.stockListButton.setFont(font2)
+        self.stockListButton.setStyleSheet(u"QPushButton {\n"
+"  border-radius: 12px; background: #E5E5E5; padding: 6px;\n"
 "}\n"
-"QPushButton:hover   { background: rgba(255,255,255,200); }\n"
-"QPushButton:pressed { background: rgba(255,255,255,150); }")
+"QPushButton:hover   { background: rgba(229,229,229,200); }\n"
+"QPushButton:pressed { background: rgba(229,229,229,150); }")
 
-        self.horizontalLayout_2.addWidget(self.addStockButton)
+        self.horizontalLayout_2.addWidget(self.stockListButton)
 
         self.createBookButton = QPushButton(self.frame_11)
         self.createBookButton.setObjectName(u"createBookButton")
@@ -397,7 +401,7 @@ class Ui_Dialog(object):
         self.label_8.setText(QCoreApplication.translate("Dialog", u"Language", None))
         self.label_9.setText(QCoreApplication.translate("Dialog", u"Description", None))
         self.cancelBookButton.setText(QCoreApplication.translate("Dialog", u"Cancel", None))
-        self.addStockButton.setText(QCoreApplication.translate("Dialog", u"Add Stock", None))
+        self.stockListButton.setText(QCoreApplication.translate("Dialog", u"Stock List", None))
         self.createBookButton.setText(QCoreApplication.translate("Dialog", u"Create", None))
     # retranslateUi
 

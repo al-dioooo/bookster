@@ -1,63 +1,102 @@
-# userManagement.py
-from PySide6.QtWidgets import QWidget, QLineEdit, QToolButton
-from PySide6.QtGui import QIcon
 from PySide6.QtCore import QSize
-from customWidgets.bookCardList import BookCardList
+from PySide6.QtGui import QIcon
+from PySide6.QtWidgets import QWidget, QLineEdit, QToolButton, QMessageBox
+
+from helpers.userModel import UserModel
+from pages.userManagement.userFormDialog import UserFormDialog
+from pages.userManagement.userListItem import UserListItem
 
 
 class UserManagementPageController:
+    """Page controller for User CRUD (mirrors book page pattern)."""
+
     def __init__(self, mainWindow):
         self.mainWindow = mainWindow
-        self.users = [
-            {"name": "Alice Evergarden", "role": "Administrator"},
-            {"name": "Aldio Lisafron", "role": "Librarian"},
-            {"name": "Arisu", "role": "User"},
-        ]
+        self.userModel = UserModel("data/users.json")
+        self.users = self.userModel.all()
 
-        self.setupUi()
+        self.setupUI()
         self.connectSignals()
-        self.populateUserList(self.users)
+        self.populateList(self.users)
 
-    def setupUi(self):
-        self.userListScrollArea = self.getUserListScrollArea()
-        self.userListScrollContent = self.userListScrollArea.widget()
-        self.userListScrollLayout = self.userListScrollContent.layout()
-        self.searchUserInput = self.getSearchUserInput()
-        self.addUserButton = self.getAddUserButton()
+    # ---------- UI ----------
+    def setupUI(self):
+        self.listArea = self._f(QWidget, "userListScrollArea")
+        self.listLayout = self.listArea.widget().layout()
+        self.searchBox = self._f(QLineEdit, "searchUserInput")
+        self.addBtn = self._f(QToolButton, "addUserButton")
 
-        plusIcon = QIcon("assets/icons/plus.svg")
-        self.addUserButton.setIcon(plusIcon)
-        self.addUserButton.setIconSize(QSize(20, 20))
+        self.addBtn.setIcon(QIcon("assets/icons/plus.svg"))
+        self.addBtn.setIconSize(QSize(20, 20))
 
+    # ---------- Signals ----------
     def connectSignals(self):
-        self.searchUserInput.textChanged.connect(self.onSearchUserInputChanged)
+        self.searchBox.textChanged.connect(self.onSearch)
+        self.addBtn.clicked.connect(self.createUser)
 
-    def getUserListScrollArea(self):
-        return self.mainWindow.findChild(QWidget, "userListScrollArea")
+    # ---------- helpers ----------
+    def _f(self, typ, name):
+        return self.mainWindow.findChild(typ, name)
 
-    def getSearchUserInput(self):
-        return self.mainWindow.findChild(QLineEdit, "searchUserInput")
+    # ---------- listing ----------
+    def onSearch(self, txt):
+        key = txt.lower()
+        self.populateList(
+            [
+                u
+                for u in self.users
+                if key in u["name"].lower()
+                or key in u["role"].lower()
+                or key in u["username"].lower()
+            ]
+        )
 
-    def getAddUserButton(self):
-        return self.mainWindow.findChild(QToolButton, "addUserButton")
+    def populateList(self, users):
+        while self.listLayout.count():
+            w = self.listLayout.takeAt(0)
+            if w.widget():
+                w.widget().deleteLater()
 
-    def onSearchUserInputChanged(self, text):
-        filteredUsers = [
-            user
-            for user in self.users
-            if text.lower() in user["name"].lower()
-            or text.lower() in user["role"].lower()
-        ]
-        self.populateUserList(filteredUsers)
+        for u in users:
+            item = UserListItem(u)
+            item.editRequested.connect(self.editUser)
+            item.deleteRequested.connect(self.deleteUser)
+            self.listLayout.addWidget(item)
 
-    def populateUserList(self, users):
-        while self.userListScrollLayout.count():
-            child = self.userListScrollLayout.takeAt(0)
-            if child.widget():
-                child.widget().deleteLater()
+        self.listLayout.addStretch()
 
-        for user in users:
-            card = BookCardList(user["name"], user["role"])
-            self.userListScrollLayout.addWidget(card)
+    # ---------- CRUD ----------
+    def createUser(self):
+        dlg = UserFormDialog(self.mainWindow)
+        if not dlg.exec():
+            return
 
-        self.userListScrollLayout.addStretch()
+        data = dlg.data()
+        data["id"] = self.userModel.next_id()
+        self.userModel.upsert(data)
+
+        self.users = self.userModel.all()
+        self.populateList(self.users)
+
+    def editUser(self, user: dict):
+        dlg = UserFormDialog(self.mainWindow, user)
+        if not dlg.exec():
+            return
+        self.userModel.upsert(dlg.data())
+        self.users = self.userModel.all()
+        self.populateList(self.users)
+
+    def deleteUser(self, user: dict):
+        if (
+            QMessageBox.question(
+                self.mainWindow,
+                "Confirm",
+                f'Delete user "{user["name"]}"?',
+                QMessageBox.Yes | QMessageBox.No,
+            )
+            == QMessageBox.No
+        ):
+            return
+        self.userModel.delete(user["id"])
+        self.users = self.userModel.all()
+        self.populateList(self.users)
