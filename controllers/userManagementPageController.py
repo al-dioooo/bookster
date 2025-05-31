@@ -12,18 +12,20 @@ from pages.userManagement.userListItem import UserListItem
 
 
 class UserManagementPageController:
-    """Page controller for User CRUD (mirrors book page pattern)."""
+    """User CRUD page.  Librarian sees only *member* accounts."""
+
+    pageTitle = "👥 User Management"
 
     # ------------------------------------------------------------------
     def __init__(self, mainWindow):
         self.mainWindow = mainWindow
         self.userModel = UserModel("data/users.json")
         self.authManager = AuthManager()
-        self.users = self.userModel.all()
 
         self.setupUI()
         self.connectSignals()
-        self.populateList(self.users)
+
+        self._reloadUsers()
 
     # ------------------------------------------------------------------
     # UI
@@ -42,48 +44,65 @@ class UserManagementPageController:
         self.backButton.setIconSize(QSize(20, 20))
 
     # ------------------------------------------------------------------
-    # Signals
+    # signals
     # ------------------------------------------------------------------
     def connectSignals(self):
-        self.searchBox.textChanged.connect(self.onSearch)
+        self.searchBox.textChanged.connect(self._search)
         self.backButton.clicked.connect(self._goBack)
-        self.addBtn.clicked.connect(self.createUser)
+        self.addBtn.clicked.connect(self._createUser)
 
+    # ------------------------------------------------------------------
+    # navigation helpers
+    # ------------------------------------------------------------------
     def _goBack(self):
         self.mainWindow.stackedWidget.setCurrentWidget(self.mainWindow.mainPage)
         self.mainWindow.setWindowTitle("Bookster - Dashboard")
 
-    # ------------------------------------------------------------------
-    # helpers
-    # ------------------------------------------------------------------
     def _f(self, typ, name):
         return self.mainWindow.findChild(typ, name)
 
     # ------------------------------------------------------------------
+    # role helper
+    # ------------------------------------------------------------------
+    def _is_librarian(self) -> bool:
+        return self.authManager.getLoggedInUser().get("role") == "librarian"
+
+    # ------------------------------------------------------------------
+    # load + role-filter
+    # ------------------------------------------------------------------
+    def _reloadUsers(self):
+        all_users = self.userModel.all()
+        self.baseUsers = (
+            [u for u in all_users if u["role"] == "member"]
+            if self._is_librarian()
+            else all_users
+        )
+        self._populate(self.baseUsers)
+
+    # ------------------------------------------------------------------
     # listing / search
     # ------------------------------------------------------------------
-    def onSearch(self, txt: str):
-        key = txt.lower()
-        self.populateList(
-            [
-                u
-                for u in self.users
-                if key in u["name"].lower()
-                or key in u["role"].lower()
-                or key in u["username"].lower()
-            ]
-        )
+    def _search(self, text: str):
+        key = text.lower()
+        filtered = [
+            u
+            for u in self.baseUsers
+            if key in u["name"].lower()
+            or key in u["role"].lower()
+            or key in u["username"].lower()
+        ]
+        self._populate(filtered)
 
-    def populateList(self, users):
+    def _populate(self, users):
         while self.listLayout.count():
-            w = self.listLayout.takeAt(0)
-            if w.widget():
-                w.widget().deleteLater()
+            item = self.listLayout.takeAt(0)
+            if item.widget():
+                item.widget().deleteLater()
 
         for u in users:
             item = UserListItem(u)
-            item.editRequested.connect(self.editUser)
-            item.deleteRequested.connect(self.deleteUser)
+            item.editRequested.connect(self._editUser)
+            item.deleteRequested.connect(self._deleteUser)
             self.listLayout.addWidget(item)
 
         self.listLayout.addStretch()
@@ -96,26 +115,17 @@ class UserManagementPageController:
         )
 
     # ------------------------------------------------------------------
-    # CRUD
+    # CRUD operations
     # ------------------------------------------------------------------
-    def _is_librarian(self) -> bool:
-        return self.authManager.getLoggedInUser().get("role") == "librarian"
-
-    # -------- CREATE --------
-    def createUser(self):
+    def _createUser(self):
         librarian_mode = self._is_librarian()
 
-        dlg = UserFormDialog(
-            self.mainWindow,
-            hideRoleField=librarian_mode,  # hide role combo for librarians
-        )
+        dlg = UserFormDialog(self.mainWindow, hideRoleField=librarian_mode)
         if not dlg.exec():
             return
 
         data = dlg.data()
         data["id"] = self.userModel.next_id()
-
-        # enforce member role if librarian
         if librarian_mode:
             data["role"] = "member"
 
@@ -125,11 +135,9 @@ class UserManagementPageController:
             QMessageBox.warning(self.mainWindow, "", str(e))
             return
 
-        self.users = self.userModel.all()
-        self.populateList(self.users)
+        self._reloadUsers()
 
-    # -------- EDIT --------
-    def editUser(self, user: dict):
+    def _editUser(self, user: dict):
         librarian_mode = self._is_librarian()
 
         dlg = UserFormDialog(self.mainWindow, user=user, hideRoleField=librarian_mode)
@@ -137,16 +145,13 @@ class UserManagementPageController:
             return
 
         data = dlg.data()
-        # ensure librarians cannot elevate roles while editing
         if librarian_mode:
-            data["role"] = user.get("role", "member")
+            data["role"] = user.get("role", "member")  # cannot elevate
 
         self.userModel.upsert(data)
-        self.users = self.userModel.all()
-        self.populateList(self.users)
+        self._reloadUsers()
 
-    # -------- DELETE --------
-    def deleteUser(self, user: dict):
+    def _deleteUser(self, user: dict):
         if (
             QMessageBox.question(
                 self.mainWindow,
@@ -157,6 +162,6 @@ class UserManagementPageController:
             == QMessageBox.No
         ):
             return
+
         self.userModel.delete(user["id"])
-        self.users = self.userModel.all()
-        self.populateList(self.users)
+        self._reloadUsers()
