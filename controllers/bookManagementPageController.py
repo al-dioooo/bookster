@@ -54,12 +54,12 @@ class BookManagementPageController:
     # ---------------- Signals ----------------
     def connectSignals(self):
         self.searchBookInput.textChanged.connect(self.filterBooks)
-        self.backButton.clicked.connect(
-            lambda: self.mainWindow.stackedWidget.setCurrentWidget(
-                self.mainWindow.mainPage
-            )
-        )
+        self.backButton.clicked.connect(self._goBack)
         self.addBookButton.clicked.connect(self.openCreateDialog)
+
+    def _goBack(self):
+        self.mainWindow.stackedWidget.setCurrentWidget(self.mainWindow.mainPage)
+        self.mainWindow.setWindowTitle("Bookster - Dashboard")
 
     # ---------------- helpers ----------------
     def _f(self, typ, name):
@@ -72,7 +72,9 @@ class BookManagementPageController:
             [
                 b
                 for b in self.books
-                if key in b["title"].lower() or key in b["author"].lower() or key in b["isbn"].lower()
+                if key in b["title"].lower()
+                or key in b["author"].lower()
+                or key in b["isbn"].lower()
             ]
         )
 

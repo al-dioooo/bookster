@@ -3,6 +3,8 @@ import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QWidget
 from ui_form import Ui_MainWindow
 
+from helpers.authManager import AuthManager
+
 # Page Controllers
 from controllers.startPageController import StartPageController
 from controllers.loginPageController import LoginPageController
@@ -17,6 +19,8 @@ class MainWindow(QMainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        self.authManager = AuthManager("data/users.json", "data/session.json")
 
         # Reference to stacked widget and pages
         self.stackedWidget = self.findChild(QStackedWidget, "stackedWidget")

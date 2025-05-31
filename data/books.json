@@ -321,7 +321,7 @@
     {
         "title": "New Book by Alice",
         "description": "asdasdsad",
-        "author": "Memek Bu Shelvie",
+        "author": "The Fuck",
         "publisher": "asdsad",
         "year": "2050",
         "isbn": "ISBN-Arisuu",
@@ -340,5 +340,17 @@
         "language": "asdasdasd",
         "cover": "data/images/books/57419b7c-7753-4be3-bb8e-1bb1476c8020.jpg",
         "stock": 0
+    },
+    {
+        "title": "Book Title",
+        "description": "Lorem ipsum dolor sit amet.",
+        "author": "Alice Evergarden",
+        "publisher": "Evergarden",
+        "year": "2025",
+        "isbn": "ISBN-1412-1412",
+        "genre": "Sad Romance",
+        "language": "English",
+        "cover": "data/images/books/82378e21-af38-44e9-a56f-ff2b708b82c1.jpg",
+        "stock": 1
     }
 ]

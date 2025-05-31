@@ -24,9 +24,10 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(720, 480)
+        Dialog.resize(720, 720)
         self.dialogVerticalLayout = QVBoxLayout(Dialog)
         self.dialogVerticalLayout.setObjectName(u"dialogVerticalLayout")
+        self.dialogVerticalLayout.setContentsMargins(12, 12, 12, 12)
         self.scrollArea = QScrollArea(Dialog)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setStyleSheet(u"")
@@ -34,7 +35,7 @@ class Ui_Dialog(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 696, 903))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 696, 890))
         self.scrollAreaWidgetContents.setStyleSheet(u"QWidget#scrollAreaWidgetContents {\n"
 "	background-color: #FFF;\n"
 "	border-radius: 16px;\n"
@@ -58,20 +59,21 @@ class Ui_Dialog(object):
 
         self.frame_10 = QFrame(self.scrollAreaWidgetContents)
         self.frame_10.setObjectName(u"frame_10")
-        self.frame_10.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_10.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_10.setFrameShape(QFrame.Shape.NoFrame)
         self.horizontalLayout = QHBoxLayout(self.frame_10)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.frame_9 = QFrame(self.frame_10)
         self.frame_9.setObjectName(u"frame_9")
-        self.frame_9.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_9.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_9.setFrameShape(QFrame.Shape.NoFrame)
         self.verticalLayout_11 = QVBoxLayout(self.frame_9)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.label_11 = QLabel(self.frame_9)
         self.label_11.setObjectName(u"label_11")
+        font1 = QFont()
+        font1.setFamilies([u"Poppins"])
+        self.label_11.setFont(font1)
 
         self.verticalLayout_11.addWidget(self.label_11, 0, Qt.AlignmentFlag.AlignBottom)
 
@@ -91,10 +93,10 @@ class Ui_Dialog(object):
         self.toolButton = QToolButton(self.frame_9)
         self.toolButton.setObjectName(u"toolButton")
         self.toolButton.setMinimumSize(QSize(36, 36))
-        font1 = QFont()
-        font1.setFamilies([u"Poppins"])
-        font1.setPointSize(13)
-        self.toolButton.setFont(font1)
+        font2 = QFont()
+        font2.setFamilies([u"Poppins"])
+        font2.setPointSize(13)
+        self.toolButton.setFont(font2)
         self.toolButton.setStyleSheet(u"QToolButton {\n"
 "  border-radius: 12px; background: #3B82F6; color: #FFF; padding: 6px;\n"
 "}\n"
@@ -113,9 +115,7 @@ class Ui_Dialog(object):
 
         self.groupBox = QGroupBox(self.frame_10)
         self.groupBox.setObjectName(u"groupBox")
-        font2 = QFont()
-        font2.setFamilies([u"Poppins"])
-        self.groupBox.setFont(font2)
+        self.groupBox.setFont(font1)
         self.verticalLayout_5 = QVBoxLayout(self.groupBox)
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
@@ -123,12 +123,11 @@ class Ui_Dialog(object):
         self.frame = QFrame(self.groupBox)
         self.frame.setObjectName(u"frame")
         self.frame.setMinimumSize(QSize(0, 80))
-        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout = QVBoxLayout(self.frame)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.label = QLabel(self.frame)
         self.label.setObjectName(u"label")
+        self.label.setFont(font1)
 
         self.verticalLayout.addWidget(self.label, 0, Qt.AlignmentFlag.AlignBottom)
 
@@ -139,6 +138,15 @@ class Ui_Dialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.bookIsbnInput.sizePolicy().hasHeightForWidth())
         self.bookIsbnInput.setSizePolicy(sizePolicy)
+        self.bookIsbnInput.setStyleSheet(u"QLineEdit {\n"
+"	padding: 6px 12px;\n"
+"	border-radius: 12px;\n"
+"	border: 2px solid #E5E5E5;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid #DBEAFE;\n"
+"}")
 
         self.verticalLayout.addWidget(self.bookIsbnInput)
 
@@ -148,12 +156,11 @@ class Ui_Dialog(object):
         self.frame_2 = QFrame(self.groupBox)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setMinimumSize(QSize(0, 80))
-        self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.frame_2)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.label_2 = QLabel(self.frame_2)
         self.label_2.setObjectName(u"label_2")
+        self.label_2.setFont(font1)
 
         self.verticalLayout_2.addWidget(self.label_2, 0, Qt.AlignmentFlag.AlignBottom)
 
@@ -161,6 +168,15 @@ class Ui_Dialog(object):
         self.bookTitleInput.setObjectName(u"bookTitleInput")
         sizePolicy.setHeightForWidth(self.bookTitleInput.sizePolicy().hasHeightForWidth())
         self.bookTitleInput.setSizePolicy(sizePolicy)
+        self.bookTitleInput.setStyleSheet(u"QLineEdit {\n"
+"	padding: 6px 12px;\n"
+"	border-radius: 12px;\n"
+"	border: 2px solid #E5E5E5;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid #DBEAFE;\n"
+"}")
 
         self.verticalLayout_2.addWidget(self.bookTitleInput)
 
@@ -170,12 +186,11 @@ class Ui_Dialog(object):
         self.frame_3 = QFrame(self.groupBox)
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setMinimumSize(QSize(0, 80))
-        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.frame_3)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.label_3 = QLabel(self.frame_3)
         self.label_3.setObjectName(u"label_3")
+        self.label_3.setFont(font1)
 
         self.verticalLayout_3.addWidget(self.label_3, 0, Qt.AlignmentFlag.AlignBottom)
 
@@ -183,6 +198,15 @@ class Ui_Dialog(object):
         self.bookAuthorInput.setObjectName(u"bookAuthorInput")
         sizePolicy.setHeightForWidth(self.bookAuthorInput.sizePolicy().hasHeightForWidth())
         self.bookAuthorInput.setSizePolicy(sizePolicy)
+        self.bookAuthorInput.setStyleSheet(u"QLineEdit {\n"
+"	padding: 6px 12px;\n"
+"	border-radius: 12px;\n"
+"	border: 2px solid #E5E5E5;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid #DBEAFE;\n"
+"}")
 
         self.verticalLayout_3.addWidget(self.bookAuthorInput)
 
@@ -192,12 +216,11 @@ class Ui_Dialog(object):
         self.frame_4 = QFrame(self.groupBox)
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setMinimumSize(QSize(0, 80))
-        self.frame_4.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_4 = QVBoxLayout(self.frame_4)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.label_5 = QLabel(self.frame_4)
         self.label_5.setObjectName(u"label_5")
+        self.label_5.setFont(font1)
 
         self.verticalLayout_4.addWidget(self.label_5, 0, Qt.AlignmentFlag.AlignBottom)
 
@@ -205,6 +228,15 @@ class Ui_Dialog(object):
         self.bookPublisherInput.setObjectName(u"bookPublisherInput")
         sizePolicy.setHeightForWidth(self.bookPublisherInput.sizePolicy().hasHeightForWidth())
         self.bookPublisherInput.setSizePolicy(sizePolicy)
+        self.bookPublisherInput.setStyleSheet(u"QLineEdit {\n"
+"	padding: 6px 12px;\n"
+"	border-radius: 12px;\n"
+"	border: 2px solid #E5E5E5;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid #DBEAFE;\n"
+"}")
 
         self.verticalLayout_4.addWidget(self.bookPublisherInput)
 
@@ -219,7 +251,7 @@ class Ui_Dialog(object):
 
         self.groupBox_2 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_2.setObjectName(u"groupBox_2")
-        self.groupBox_2.setFont(font2)
+        self.groupBox_2.setFont(font1)
         self.verticalLayout_6 = QVBoxLayout(self.groupBox_2)
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
@@ -227,12 +259,11 @@ class Ui_Dialog(object):
         self.frame_5 = QFrame(self.groupBox_2)
         self.frame_5.setObjectName(u"frame_5")
         self.frame_5.setMinimumSize(QSize(0, 80))
-        self.frame_5.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_5.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_7 = QVBoxLayout(self.frame_5)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.label_6 = QLabel(self.frame_5)
         self.label_6.setObjectName(u"label_6")
+        self.label_6.setFont(font1)
 
         self.verticalLayout_7.addWidget(self.label_6, 0, Qt.AlignmentFlag.AlignBottom)
 
@@ -240,6 +271,15 @@ class Ui_Dialog(object):
         self.bookYearInput.setObjectName(u"bookYearInput")
         sizePolicy.setHeightForWidth(self.bookYearInput.sizePolicy().hasHeightForWidth())
         self.bookYearInput.setSizePolicy(sizePolicy)
+        self.bookYearInput.setStyleSheet(u"QLineEdit {\n"
+"	padding: 6px 12px;\n"
+"	border-radius: 12px;\n"
+"	border: 2px solid #E5E5E5;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid #DBEAFE;\n"
+"}")
 
         self.verticalLayout_7.addWidget(self.bookYearInput)
 
@@ -249,12 +289,11 @@ class Ui_Dialog(object):
         self.frame_6 = QFrame(self.groupBox_2)
         self.frame_6.setObjectName(u"frame_6")
         self.frame_6.setMinimumSize(QSize(0, 80))
-        self.frame_6.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_6.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_8 = QVBoxLayout(self.frame_6)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.label_7 = QLabel(self.frame_6)
         self.label_7.setObjectName(u"label_7")
+        self.label_7.setFont(font1)
 
         self.verticalLayout_8.addWidget(self.label_7, 0, Qt.AlignmentFlag.AlignBottom)
 
@@ -262,6 +301,15 @@ class Ui_Dialog(object):
         self.bookGenreInput.setObjectName(u"bookGenreInput")
         sizePolicy.setHeightForWidth(self.bookGenreInput.sizePolicy().hasHeightForWidth())
         self.bookGenreInput.setSizePolicy(sizePolicy)
+        self.bookGenreInput.setStyleSheet(u"QLineEdit {\n"
+"	padding: 6px 12px;\n"
+"	border-radius: 12px;\n"
+"	border: 2px solid #E5E5E5;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid #DBEAFE;\n"
+"}")
 
         self.verticalLayout_8.addWidget(self.bookGenreInput)
 
@@ -271,12 +319,11 @@ class Ui_Dialog(object):
         self.frame_7 = QFrame(self.groupBox_2)
         self.frame_7.setObjectName(u"frame_7")
         self.frame_7.setMinimumSize(QSize(0, 80))
-        self.frame_7.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_7.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_9 = QVBoxLayout(self.frame_7)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.label_8 = QLabel(self.frame_7)
         self.label_8.setObjectName(u"label_8")
+        self.label_8.setFont(font1)
 
         self.verticalLayout_9.addWidget(self.label_8, 0, Qt.AlignmentFlag.AlignBottom)
 
@@ -284,6 +331,15 @@ class Ui_Dialog(object):
         self.bookLanguageInput.setObjectName(u"bookLanguageInput")
         sizePolicy.setHeightForWidth(self.bookLanguageInput.sizePolicy().hasHeightForWidth())
         self.bookLanguageInput.setSizePolicy(sizePolicy)
+        self.bookLanguageInput.setStyleSheet(u"QLineEdit {\n"
+"	padding: 6px 12px;\n"
+"	border-radius: 12px;\n"
+"	border: 2px solid #E5E5E5;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid #DBEAFE;\n"
+"}")
 
         self.verticalLayout_9.addWidget(self.bookLanguageInput)
 
@@ -293,12 +349,11 @@ class Ui_Dialog(object):
         self.frame_8 = QFrame(self.groupBox_2)
         self.frame_8.setObjectName(u"frame_8")
         self.frame_8.setMinimumSize(QSize(0, 80))
-        self.frame_8.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_8.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_10 = QVBoxLayout(self.frame_8)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.label_9 = QLabel(self.frame_8)
         self.label_9.setObjectName(u"label_9")
+        self.label_9.setFont(font1)
 
         self.verticalLayout_10.addWidget(self.label_9, 0, Qt.AlignmentFlag.AlignBottom)
 
@@ -306,6 +361,15 @@ class Ui_Dialog(object):
         self.bookDescriptionInput.setObjectName(u"bookDescriptionInput")
         sizePolicy.setHeightForWidth(self.bookDescriptionInput.sizePolicy().hasHeightForWidth())
         self.bookDescriptionInput.setSizePolicy(sizePolicy)
+        self.bookDescriptionInput.setStyleSheet(u"QLineEdit {\n"
+"	padding: 6px 12px;\n"
+"	border-radius: 12px;\n"
+"	border: 2px solid #E5E5E5;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid #DBEAFE;\n"
+"}")
 
         self.verticalLayout_10.addWidget(self.bookDescriptionInput)
 
@@ -327,11 +391,9 @@ class Ui_Dialog(object):
         sizePolicy1.setHeightForWidth(self.frame_11.sizePolicy().hasHeightForWidth())
         self.frame_11.setSizePolicy(sizePolicy1)
         self.frame_11.setMinimumSize(QSize(0, 60))
-        self.frame_11.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_11.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.frame_11)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer)
@@ -339,7 +401,7 @@ class Ui_Dialog(object):
         self.cancelBookButton = QPushButton(self.frame_11)
         self.cancelBookButton.setObjectName(u"cancelBookButton")
         self.cancelBookButton.setMinimumSize(QSize(100, 0))
-        self.cancelBookButton.setFont(font2)
+        self.cancelBookButton.setFont(font1)
         self.cancelBookButton.setStyleSheet(u"QPushButton {\n"
 "  border-radius: 12px; background: #E5E5E5; padding: 6px;\n"
 "}\n"
@@ -351,7 +413,7 @@ class Ui_Dialog(object):
         self.stockListButton = QPushButton(self.frame_11)
         self.stockListButton.setObjectName(u"stockListButton")
         self.stockListButton.setMinimumSize(QSize(100, 0))
-        self.stockListButton.setFont(font2)
+        self.stockListButton.setFont(font1)
         self.stockListButton.setStyleSheet(u"QPushButton {\n"
 "  border-radius: 12px; background: #E5E5E5; padding: 6px;\n"
 "}\n"
@@ -363,7 +425,7 @@ class Ui_Dialog(object):
         self.createBookButton = QPushButton(self.frame_11)
         self.createBookButton.setObjectName(u"createBookButton")
         self.createBookButton.setMinimumSize(QSize(100, 0))
-        self.createBookButton.setFont(font2)
+        self.createBookButton.setFont(font1)
         self.createBookButton.setStyleSheet(u"QPushButton {\n"
 "  border-radius: 12px; background: #3B82F6; color: #FFF; padding: 6px;\n"
 "}\n"

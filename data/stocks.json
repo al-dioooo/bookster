@@ -46,5 +46,11 @@
         "location": "Shelf A1",
         "isbn": "asdasdasd",
         "status": "available"
+    },
+    {
+        "sku": "SKU-1412",
+        "location": "Shelf#3#4#2",
+        "isbn": "ISBN-1412-1412",
+        "status": "available"
     }
 ]

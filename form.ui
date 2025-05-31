@@ -36,7 +36,7 @@
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="startPage">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -84,41 +84,24 @@
            </size>
           </property>
           <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <property name="frameShadow">
            <enum>QFrame::Shadow::Raised</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QPushButton" name="mainButton">
-             <property name="font">
-              <font>
-               <family>Poppins</family>
-               <pointsize>16</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-	border-radius: 12px;
-	background: #93C5FD;
-	color: white;
-	padding: 6px;
-}
-
-QPushButton:hover {
-	background: rgba(147, 197, 253, 200);
-}
-
-QPushButton:pressed {
-	background: rgba(147, 197, 253, 150);
-}</string>
-             </property>
-             <property name="text">
-              <string>Main</string>
-             </property>
-            </widget>
-           </item>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item>
             <widget class="QPushButton" name="loginButton">
              <property name="font">
@@ -147,7 +130,7 @@ QPushButton:pressed {
 }</string>
              </property>
              <property name="text">
-              <string>Login</string>
+              <string>Start</string>
              </property>
              <property name="checkable">
               <bool>false</bool>
@@ -166,12 +149,6 @@ QPushButton:pressed {
        <layout class="QVBoxLayout" name="verticalLayout_18">
         <item alignment="Qt::AlignmentFlag::AlignLeft">
          <widget class="QFrame" name="frame_12">
-          <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
-          </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <property name="leftMargin">
             <number>0</number>
@@ -241,7 +218,7 @@ QToolButton QLabel {
 }</string>
             </property>
             <property name="text">
-             <string>Book Lend History</string>
+             <string>Borrow &amp; Return</string>
             </property>
            </widget>
           </item>
@@ -286,12 +263,6 @@ QToolButton QLabel {
 	margin:0;
 }</string>
           </property>
-          <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
-          </property>
           <layout class="QHBoxLayout" name="horizontalLayout_6">
            <property name="leftMargin">
             <number>0</number>
@@ -331,7 +302,7 @@ QLineEdit:focus {
 }</string>
              </property>
              <property name="placeholderText">
-              <string>Search History Data</string>
+              <string>Search Lend History Data</string>
              </property>
              <property name="clearButtonEnabled">
               <bool>true</bool>
@@ -423,7 +394,7 @@ QScrollBar {
              <x>0</x>
              <y>0</y>
              <width>724</width>
-             <height>189</height>
+             <height>190</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_19">
@@ -459,12 +430,24 @@ QScrollBar {
            </size>
           </property>
           <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <property name="frameShadow">
            <enum>QFrame::Shadow::Raised</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
@@ -556,21 +539,42 @@ QToolButton QLabel {
         <item>
          <widget class="QFrame" name="frame_5">
           <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <property name="frameShadow">
            <enum>QFrame::Shadow::Raised</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item>
             <widget class="QFrame" name="frame_2">
              <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+              <enum>QFrame::Shape::NoFrame</enum>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_6">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
                <widget class="QToolButton" name="bookManagementLinkButton">
                 <property name="sizePolicy">
@@ -644,12 +648,21 @@ QToolButton QLabel {
            <item>
             <widget class="QFrame" name="frame_3">
              <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+              <enum>QFrame::Shape::NoFrame</enum>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_7">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
                <widget class="QToolButton" name="userManagementLinkButton">
                 <property name="sizePolicy">
@@ -723,12 +736,21 @@ QToolButton QLabel {
            <item>
             <widget class="QFrame" name="frame_4">
              <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+              <enum>QFrame::Shape::NoFrame</enum>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_8">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
               <item alignment="Qt::AlignmentFlag::AlignHCenter">
                <widget class="QToolButton" name="bookLendHistoryLinkButton">
                 <property name="sizePolicy">
@@ -792,7 +814,7 @@ QToolButton QLabel {
                  </font>
                 </property>
                 <property name="text">
-                 <string>Lend History</string>
+                 <string>Borrow &amp; Return</string>
                 </property>
                </widget>
               </item>
@@ -852,12 +874,21 @@ QToolButton QLabel {
            </size>
           </property>
           <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item alignment="Qt::AlignmentFlag::AlignBottom">
             <widget class="QLabel" name="usernameLabel">
              <property name="minimumSize">
@@ -893,9 +924,13 @@ QToolButton QLabel {
              </property>
              <property name="styleSheet">
               <string notr="true">QLineEdit {
-	padding: 12px;
+	padding: 6px 12px;
 	border-radius: 12px;
-	border: 6px solid #DBEAFE;
+	border: 2px solid #E5E5E5;
+}
+
+QLineEdit:focus {
+	border: 2px solid #DBEAFE;
 }</string>
              </property>
             </widget>
@@ -929,9 +964,13 @@ QToolButton QLabel {
              </property>
              <property name="styleSheet">
               <string notr="true">QLineEdit {
-	padding: 12px;
+	padding: 6px 12px;
 	border-radius: 12px;
-	border: 6px solid #DBEAFE;
+	border: 2px solid #E5E5E5;
+}
+
+QLineEdit:focus {
+	border: 2px solid #DBEAFE;
 }</string>
              </property>
              <property name="echoMode">
@@ -967,12 +1006,21 @@ QToolButton QLabel {
            </size>
           </property>
           <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_5">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item alignment="Qt::AlignmentFlag::AlignTop">
             <widget class="QPushButton" name="submitLoginButton">
              <property name="maximumSize">
@@ -1022,12 +1070,6 @@ QPushButton:pressed {
             <width>0</width>
             <height>40</height>
            </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_8">
            <property name="leftMargin">
@@ -1148,12 +1190,6 @@ QToolButton QLabel {
            <string notr="true">QFrame {
 	margin:0;
 }</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <property name="leftMargin">
@@ -1293,7 +1329,7 @@ QScrollBar {
              <x>0</x>
              <y>0</y>
              <width>724</width>
-             <height>226</height>
+             <height>228</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1322,12 +1358,6 @@ QScrollBar {
        <layout class="QVBoxLayout" name="verticalLayout_15">
         <item alignment="Qt::AlignmentFlag::AlignLeft">
          <widget class="QFrame" name="frame_11">
-          <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
-          </property>
           <layout class="QHBoxLayout" name="horizontalLayout_9">
            <property name="leftMargin">
             <number>0</number>
@@ -1441,12 +1471,6 @@ QToolButton QLabel {
            <string notr="true">QFrame {
 	margin:0;
 }</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <property name="leftMargin">
@@ -1586,7 +1610,7 @@ QScrollBar {
              <x>0</x>
              <y>0</y>
              <width>724</width>
-             <height>226</height>
+             <height>228</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_13">

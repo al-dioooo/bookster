@@ -10,5 +10,17 @@
         "author": "asdasd",
         "cover": "data/images/books/57419b7c-7753-4be3-bb8e-1bb1476c8020.jpg",
         "returned": "2025-05-30"
+    },
+    {
+        "isbn": "ISBN-1412-1412",
+        "sku": "SKU-1412",
+        "user": "Saa",
+        "borrowed": "2025-05-30",
+        "due": "2025-06-06",
+        "status": "returned",
+        "title": "-",
+        "author": "-",
+        "cover": "",
+        "returned": "2025-05-30"
     }
 ]

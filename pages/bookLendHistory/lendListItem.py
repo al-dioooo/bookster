@@ -12,7 +12,7 @@ from PySide6.QtWidgets import (
 )
 
 PLACEHOLDER = "assets/images/placeholder.png"
-THUMB = QSize(60, 80)
+THUMB = QSize(75, 100)
 
 
 class LendListItem(QWidget):
@@ -38,10 +38,10 @@ class LendListItem(QWidget):
         root.setContentsMargins(8, 4, 8, 4)
         root.setSpacing(10)
 
-        # thumbnail
+        # Thumbnail
         cover = QLabel()
         cover.setFixedSize(THUMB)
-        cover.setStyleSheet("border:3px solid #F5F5F5;border-radius:8px;")
+        cover.setStyleSheet("border:3px solid #F5F5F5;border-radius:12px;")
         path = self.rec.get("cover") or PLACEHOLDER
         cover.setPixmap(
             QPixmap(path).scaled(
@@ -50,11 +50,11 @@ class LendListItem(QWidget):
         )
         root.addWidget(cover)
 
-        # text block
+        # Text Block
         vbox = QVBoxLayout()
         vbox.setSpacing(1)
-        fBig = QFont("Poppins", 12, QFont.Bold)
-        fSmall = QFont("Poppins", 10)
+        fBig = QFont("Poppins", 16, QFont.DemiBold)
+        fSmall = QFont("Poppins", 12)
 
         vbox.addWidget(self._lbl(self.rec["title"], fBig))
         vbox.addWidget(
@@ -100,5 +100,5 @@ class LendListItem(QWidget):
     def _lbl(text, font):
         l = QLabel(text)
         l.setFont(font)
-        l.setStyleSheet("color:#6B7280")
+        # l.setStyleSheet("color:#6B7280")
         return l

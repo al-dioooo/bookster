@@ -70,5 +70,5 @@ class DashboardPageController:
 
     def logout(self):
         self.mainWindow.authManager.logout()
-        self.mainWindow.stackedWidget.setCurrentWidget(self.mainWindow.startPage)
+        self.mainWindow.stackedWidget.setCurrentWidget(self.mainWindow.loginPage)
         self.clearUserInfo()

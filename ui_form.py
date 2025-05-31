@@ -66,35 +66,16 @@ class Ui_MainWindow(object):
         self.frame.setObjectName(u"frame")
         self.frame.setMinimumSize(QSize(500, 0))
         self.frame.setMaximumSize(QSize(500, 16777215))
-        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame.setFrameShape(QFrame.Shape.NoFrame)
         self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout = QHBoxLayout(self.frame)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.mainButton = QPushButton(self.frame)
-        self.mainButton.setObjectName(u"mainButton")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.loginButton = QPushButton(self.frame)
+        self.loginButton.setObjectName(u"loginButton")
         font2 = QFont()
         font2.setFamilies([u"Poppins"])
         font2.setPointSize(16)
-        self.mainButton.setFont(font2)
-        self.mainButton.setStyleSheet(u"QPushButton {\n"
-"	border-radius: 12px;\n"
-"	background: #93C5FD;\n"
-"	color: white;\n"
-"	padding: 6px;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"	background: rgba(147, 197, 253, 200);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background: rgba(147, 197, 253, 150);\n"
-"}")
-
-        self.horizontalLayout.addWidget(self.mainButton)
-
-        self.loginButton = QPushButton(self.frame)
-        self.loginButton.setObjectName(u"loginButton")
         self.loginButton.setFont(font2)
         self.loginButton.setMouseTracking(True)
         self.loginButton.setStyleSheet(u"QPushButton {\n"
@@ -126,8 +107,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
         self.frame_12 = QFrame(self.bookLendHistoryPage)
         self.frame_12.setObjectName(u"frame_12")
-        self.frame_12.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_12.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.frame_12)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -201,8 +180,6 @@ class Ui_MainWindow(object):
         self.frame_8.setStyleSheet(u"QFrame {\n"
 "	margin:0;\n"
 "}")
-        self.frame_8.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_8.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_6 = QHBoxLayout(self.frame_8)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(0, -1, 0, -1)
@@ -283,7 +260,7 @@ class Ui_MainWindow(object):
         self.bookLendHistoryListScrollArea.setWidgetResizable(True)
         self.bookLendHistoryListcrollAreaWidgetContents = QWidget()
         self.bookLendHistoryListcrollAreaWidgetContents.setObjectName(u"bookLendHistoryListcrollAreaWidgetContents")
-        self.bookLendHistoryListcrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 189))
+        self.bookLendHistoryListcrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 190))
         self.verticalLayout_19 = QVBoxLayout(self.bookLendHistoryListcrollAreaWidgetContents)
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
         self.verticalLayout_19.setContentsMargins(0, 0, 0, 0)
@@ -304,10 +281,11 @@ class Ui_MainWindow(object):
         self.frame_9 = QFrame(self.mainPage)
         self.frame_9.setObjectName(u"frame_9")
         self.frame_9.setMinimumSize(QSize(0, 30))
-        self.frame_9.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_9.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_9.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_7 = QHBoxLayout(self.frame_9)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.greetingsLabel = QLabel(self.frame_9)
@@ -363,16 +341,17 @@ class Ui_MainWindow(object):
 
         self.frame_5 = QFrame(self.mainPage)
         self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_5.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_5.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.frame_2 = QFrame(self.frame_5)
         self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_2.setFrameShape(QFrame.Shape.NoFrame)
         self.verticalLayout_6 = QVBoxLayout(self.frame_2)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.bookManagementLinkButton = QToolButton(self.frame_2)
         self.bookManagementLinkButton.setObjectName(u"bookManagementLinkButton")
         sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum)
@@ -416,10 +395,10 @@ class Ui_MainWindow(object):
 
         self.frame_3 = QFrame(self.frame_5)
         self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_3.setFrameShape(QFrame.Shape.NoFrame)
         self.verticalLayout_7 = QVBoxLayout(self.frame_3)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.userManagementLinkButton = QToolButton(self.frame_3)
         self.userManagementLinkButton.setObjectName(u"userManagementLinkButton")
         sizePolicy2.setHeightForWidth(self.userManagementLinkButton.sizePolicy().hasHeightForWidth())
@@ -460,10 +439,10 @@ class Ui_MainWindow(object):
 
         self.frame_4 = QFrame(self.frame_5)
         self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_4.setFrameShape(QFrame.Shape.NoFrame)
         self.verticalLayout_8 = QVBoxLayout(self.frame_4)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.bookLendHistoryLinkButton = QToolButton(self.frame_4)
         self.bookLendHistoryLinkButton.setObjectName(u"bookLendHistoryLinkButton")
         sizePolicy2.setHeightForWidth(self.bookLendHistoryLinkButton.sizePolicy().hasHeightForWidth())
@@ -530,10 +509,10 @@ class Ui_MainWindow(object):
         self.usernameAndPasswordFrame.setObjectName(u"usernameAndPasswordFrame")
         self.usernameAndPasswordFrame.setMinimumSize(QSize(500, 0))
         self.usernameAndPasswordFrame.setMaximumSize(QSize(500, 16777215))
-        self.usernameAndPasswordFrame.setFrameShape(QFrame.Shape.StyledPanel)
-        self.usernameAndPasswordFrame.setFrameShadow(QFrame.Shadow.Raised)
+        self.usernameAndPasswordFrame.setFrameShape(QFrame.Shape.NoFrame)
         self.verticalLayout_2 = QVBoxLayout(self.usernameAndPasswordFrame)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.usernameLabel = QLabel(self.usernameAndPasswordFrame)
         self.usernameLabel.setObjectName(u"usernameLabel")
         self.usernameLabel.setMinimumSize(QSize(0, 0))
@@ -546,9 +525,13 @@ class Ui_MainWindow(object):
         self.usernameInput.setObjectName(u"usernameInput")
         self.usernameInput.setFont(font2)
         self.usernameInput.setStyleSheet(u"QLineEdit {\n"
-"	padding: 12px;\n"
+"	padding: 6px 12px;\n"
 "	border-radius: 12px;\n"
-"	border: 6px solid #DBEAFE;\n"
+"	border: 2px solid #E5E5E5;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid #DBEAFE;\n"
 "}")
 
         self.verticalLayout_2.addWidget(self.usernameInput)
@@ -564,9 +547,13 @@ class Ui_MainWindow(object):
         self.passwordInput.setObjectName(u"passwordInput")
         self.passwordInput.setFont(font2)
         self.passwordInput.setStyleSheet(u"QLineEdit {\n"
-"	padding: 12px;\n"
+"	padding: 6px 12px;\n"
 "	border-radius: 12px;\n"
-"	border: 6px solid #DBEAFE;\n"
+"	border: 2px solid #E5E5E5;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid #DBEAFE;\n"
 "}")
         self.passwordInput.setEchoMode(QLineEdit.EchoMode.Password)
 
@@ -582,10 +569,10 @@ class Ui_MainWindow(object):
         self.submitLoginFrame = QFrame(self.loginPage)
         self.submitLoginFrame.setObjectName(u"submitLoginFrame")
         self.submitLoginFrame.setMinimumSize(QSize(500, 0))
-        self.submitLoginFrame.setFrameShape(QFrame.Shape.StyledPanel)
-        self.submitLoginFrame.setFrameShadow(QFrame.Shadow.Raised)
+        self.submitLoginFrame.setFrameShape(QFrame.Shape.NoFrame)
         self.verticalLayout_5 = QVBoxLayout(self.submitLoginFrame)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.submitLoginButton = QPushButton(self.submitLoginFrame)
         self.submitLoginButton.setObjectName(u"submitLoginButton")
         self.submitLoginButton.setMaximumSize(QSize(16777215, 16777215))
@@ -618,8 +605,6 @@ class Ui_MainWindow(object):
         self.frame_10 = QFrame(self.bookManagementPage)
         self.frame_10.setObjectName(u"frame_10")
         self.frame_10.setMinimumSize(QSize(0, 40))
-        self.frame_10.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_10.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_8 = QHBoxLayout(self.frame_10)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
@@ -684,8 +669,6 @@ class Ui_MainWindow(object):
         self.frame_6.setStyleSheet(u"QFrame {\n"
 "	margin:0;\n"
 "}")
-        self.frame_6.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_6.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_6)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, -1, 0, -1)
@@ -766,7 +749,7 @@ class Ui_MainWindow(object):
         self.bookListScrollArea.setWidgetResizable(True)
         self.bookListScrollAreaWidgetContents = QWidget()
         self.bookListScrollAreaWidgetContents.setObjectName(u"bookListScrollAreaWidgetContents")
-        self.bookListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 226))
+        self.bookListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 228))
         self.verticalLayout_11 = QVBoxLayout(self.bookListScrollAreaWidgetContents)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
@@ -786,8 +769,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.frame_11 = QFrame(self.userManagementPage)
         self.frame_11.setObjectName(u"frame_11")
-        self.frame_11.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_11.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.frame_11)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
@@ -851,8 +832,6 @@ class Ui_MainWindow(object):
         self.frame_7.setStyleSheet(u"QFrame {\n"
 "	margin:0;\n"
 "}")
-        self.frame_7.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_7.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.frame_7)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, -1, 0, -1)
@@ -930,7 +909,7 @@ class Ui_MainWindow(object):
         self.userListScrollArea.setWidgetResizable(True)
         self.userListScrollAreaWidgetContents = QWidget()
         self.userListScrollAreaWidgetContents.setObjectName(u"userListScrollAreaWidgetContents")
-        self.userListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 226))
+        self.userListScrollAreaWidgetContents.setGeometry(QRect(0, 0, 724, 228))
         self.verticalLayout_13 = QVBoxLayout(self.userListScrollAreaWidgetContents)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
@@ -956,7 +935,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -965,12 +944,11 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Bookster", None))
         self.titleLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Bookster</p></body></html>", None))
-        self.mainButton.setText(QCoreApplication.translate("MainWindow", u"Main", None))
-        self.loginButton.setText(QCoreApplication.translate("MainWindow", u"Login", None))
+        self.loginButton.setText(QCoreApplication.translate("MainWindow", u"Start", None))
         self.bookLendHistoryBackButton.setText("")
-        self.bookLendHistoryPageTitle.setText(QCoreApplication.translate("MainWindow", u"Book Lend History", None))
+        self.bookLendHistoryPageTitle.setText(QCoreApplication.translate("MainWindow", u"Borrow & Return", None))
         self.bookLendHistoryPageDescription.setText(QCoreApplication.translate("MainWindow", u"3 Data Available", None))
-        self.searchBookLendHistoryInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search History Data", None))
+        self.searchBookLendHistoryInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Lend History Data", None))
         self.borrowButton.setText(QCoreApplication.translate("MainWindow", u"Borrow", None))
         self.greetingsLabel.setText(QCoreApplication.translate("MainWindow", u"Hey, there!", None))
         self.roleLabel.setText(QCoreApplication.translate("MainWindow", u"Role", None))
@@ -980,7 +958,7 @@ class Ui_MainWindow(object):
         self.userManagementLinkButton.setText(QCoreApplication.translate("MainWindow", u"User", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"User", None))
         self.bookLendHistoryLinkButton.setText(QCoreApplication.translate("MainWindow", u"History", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Lend History", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Borrow & Return", None))
         self.loginTitleLabel.setText(QCoreApplication.translate("MainWindow", u"Login", None))
         self.usernameLabel.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.passwordLabel.setText(QCoreApplication.translate("MainWindow", u"Password", None))

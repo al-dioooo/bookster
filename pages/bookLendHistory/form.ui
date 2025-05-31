@@ -1,31 +1,269 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LoanHistoryPage</class>
- <widget class="QWidget" name="LoanHistoryPage">
-  <layout class="QVBoxLayout" name="verticalLayout">
-
-   <!-- Top bar -->
+ <class>LendFormDialog</class>
+ <widget class="QDialog" name="LendFormDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Borrow Book</string>
+  </property>
+  <layout class="QVBoxLayout" name="rootLayout">
    <item>
-    <widget class="QFrame" name="topBarFrame">
-     <layout class="QHBoxLayout" name="topBarLayout">
-      <item><widget class="QLineEdit" name="searchLoanInput"><property name="placeholderText"><string>Search…</string></property></widget></item>
-      <item><spacer name="hSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
-      <item><widget class="QToolButton" name="addLoanButton"><property name="text"><string>Borrow</string></property></widget></item>
-      <item><widget class="QToolButton" name="loanBackButton"><property name="text"><string>Back</string></property></widget></item>
+    <widget class="QFrame" name="cardFrame">
+     <property name="styleSheet">
+      <string notr="true">QFrame { background: #FFF; border-radius: 12px; }</string>
+     </property>
+     <layout class="QVBoxLayout" name="cardLayout">
+      <property name="spacing">
+       <number>12</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="dialogTitle">
+        <property name="font">
+         <font>
+          <family>Magic Retro</family>
+          <pointsize>36</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#3B82F6;</string>
+        </property>
+        <property name="text">
+         <string>Borrow Book</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="skuFrame">
+        <layout class="QVBoxLayout" name="skuFrameLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="skuLabel">
+           <property name="font">
+            <font>
+             <family>Poppins</family>
+            </font>
+           </property>
+           <property name="text">
+            <string>SKU</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="skuRow">
+           <layout class="QHBoxLayout" name="skuRowLayout">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLineEdit" name="skuLineEdit">
+              <property name="styleSheet">
+               <string notr="true">QLineEdit {
+	padding: 6px 12px;
+	border-radius: 12px;
+	border: 2px solid #E5E5E5;
+}
+
+QLineEdit:focus {
+	border: 2px solid #DBEAFE;
+}</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="checkSkuButton">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Poppins</family>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+  border-radius: 12px; background: #3B82F6; color: #FFF; padding: 6px;
+}
+QPushButton:hover   { background: rgba(59,130,246,200); }
+QPushButton:pressed { background: rgba(59,130,246,150); }</string>
+              </property>
+              <property name="text">
+               <string>Check</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="userFrame">
+        <layout class="QVBoxLayout" name="userFrameLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="userLabel">
+           <property name="font">
+            <font>
+             <family>Poppins</family>
+            </font>
+           </property>
+           <property name="text">
+            <string>User</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="userComboBox"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="dueFrame">
+        <layout class="QVBoxLayout" name="dueFrameLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="dueLabel">
+           <property name="text">
+            <string>Due date</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDateEdit" name="dueDateEdit">
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="coverPreview">
+        <property name="visible">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="buttonBar">
+        <layout class="QHBoxLayout" name="buttonBarLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <spacer name="buttonSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="cancelBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Poppins</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+  border-radius: 12px; background: #E5E5E5; padding: 6px;
+}
+QPushButton:hover   { background: rgba(229,229,229,200); }
+QPushButton:pressed { background: rgba(229,229,229,150); }</string>
+           </property>
+           <property name="text">
+            <string>Cancel</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="saveBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Poppins</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+  border-radius: 12px; background: #3B82F6; color: #FFF; padding: 6px;
+}
+QPushButton:hover   { background: rgba(59,130,246,200); }
+QPushButton:pressed { background: rgba(59,130,246,150); }</string>
+           </property>
+           <property name="text">
+            <string>Save</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
-
-   <!-- Scroll list -->
-   <item>
-    <widget class="QScrollArea" name="loanListScrollArea">
-     <property name="widgetResizable"><bool>true</bool></property>
-     <widget class="QWidget" name="scrollContent">
-      <layout class="QVBoxLayout" name="loanListLayout"/>
-     </widget>
-    </widget>
-   </item>
-
   </layout>
  </widget>
+ <resources/>
+ <connections/>
 </ui>

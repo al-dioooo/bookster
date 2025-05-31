@@ -26,6 +26,7 @@ class UserManagementPageController:
         self.searchBox = self._f(QLineEdit, "searchUserInput")
         self.addBtn = self._f(QToolButton, "addUserButton")
         self.backButton = self._f(QToolButton, "userManagementBackButton")
+        self.pageDescription = self._f(QWidget, "userPageDescription")
 
         self.addBtn.setIcon(QIcon("assets/icons/plus.svg"))
         self.addBtn.setIconSize(QSize(20, 20))
@@ -35,12 +36,12 @@ class UserManagementPageController:
     # ---------- Signals ----------
     def connectSignals(self):
         self.searchBox.textChanged.connect(self.onSearch)
-        self.backButton.clicked.connect(
-            lambda: self.mainWindow.stackedWidget.setCurrentWidget(
-                self.mainWindow.mainPage
-            )
-        )
+        self.backButton.clicked.connect(self._goBack)
         self.addBtn.clicked.connect(self.createUser)
+
+    def _goBack(self):
+        self.mainWindow.stackedWidget.setCurrentWidget(self.mainWindow.mainPage)
+        self.mainWindow.setWindowTitle("Bookster - Dashboard")
 
     # ---------- helpers ----------
     def _f(self, typ, name):
@@ -72,6 +73,13 @@ class UserManagementPageController:
             self.listLayout.addWidget(item)
 
         self.listLayout.addStretch()
+
+        n = len(users)
+        self.pageDescription.setText(
+            "No User Available"
+            if n == 0
+            else "1 User Available" if n == 1 else f"{n} Users Available"
+        )
 
     # ---------- CRUD ----------
     def createUser(self):

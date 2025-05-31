@@ -6,6 +6,7 @@
         "pages/bookManagement/stock_list_dialog.ui",
         "assets/assets.qrc",
         "pages/bookManagement/detail.ui",
-        "pages/userManagement/form.ui"
+        "pages/userManagement/form.ui",
+        "pages/bookLendHistory/form.ui"
     ]
 }

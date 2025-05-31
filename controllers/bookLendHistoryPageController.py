@@ -11,11 +11,6 @@ from pages.bookLendHistory.lendListItem import LendListItem
 
 
 class BookLendHistoryPageController(QWidget):
-    """
-    Controls the redesigned `bookLendHistoryPage`
-    (now using the new object names you listed).
-    """
-
     def __init__(self, mainWindow):
         super().__init__(mainWindow.bookLendHistoryPage)  # parent = existing page
         self.mainWindow = mainWindow
@@ -38,6 +33,7 @@ class BookLendHistoryPageController(QWidget):
         self.searchField = self._f(QLineEdit, "searchBookLendHistoryInput")
         self.borrowButton = self._f(QToolButton, "borrowButton")
         self.backButton = self._f(QToolButton, "bookLendHistoryBackButton")
+        self.pageDescription = self._f(QWidget, "bookLendHistoryPageDescription")
 
         # scroll-content widget (inside QScrollArea)
         self.scrollContent = self._f(
@@ -46,7 +42,7 @@ class BookLendHistoryPageController(QWidget):
         self.listLayout = self.scrollContent.layout()
 
         # icons
-        self.borrowButton.setIcon(QIcon("assets/icons/plus.svg"))
+        self.borrowButton.setIcon(QIcon("assets/icons/arrow-forward-up.svg"))
         self.borrowButton.setIconSize(QSize(20, 20))
         self.backButton.setIcon(QIcon("assets/icons/arrow-narrow-left.svg"))
         self.backButton.setIconSize(QSize(20, 20))
@@ -55,11 +51,11 @@ class BookLendHistoryPageController(QWidget):
     def connectSignals(self):
         self.searchField.textChanged.connect(self.filterList)
         self.borrowButton.clicked.connect(self.openBorrowDialog)
-        self.backButton.clicked.connect(
-            lambda: self.mainWindow.stackedWidget.setCurrentWidget(
-                self.mainWindow.mainPage
-            )
-        )
+        self.backButton.clicked.connect(self._goBack)
+
+    def _goBack(self):
+        self.mainWindow.stackedWidget.setCurrentWidget(self.mainWindow.mainPage)
+        self.mainWindow.setWindowTitle("Bookster - Dashboard")
 
     # -------------------------------------------------- list helpers
     def populate(self, rows):
@@ -74,6 +70,13 @@ class BookLendHistoryPageController(QWidget):
             item.returnRequested.connect(self.confirmReturn)
             lay.addWidget(item)
         lay.addStretch()
+
+        n = len(rows)
+        self.pageDescription.setText(
+            "No Data Available"
+            if n == 0
+            else "1 Data Available" if n == 1 else f"{n} Data Available"
+        )
 
     def filterList(self, txt):
         self.populate(self.lendModel.search(txt))
