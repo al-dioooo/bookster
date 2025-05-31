@@ -55,7 +55,11 @@ class BookManagementPageController:
     def connectSignals(self):
         self.searchBookInput.textChanged.connect(self.filterBooks)
         self.backButton.clicked.connect(self._goBack)
-        self.addBookButton.clicked.connect(self.openCreateDialog)
+
+        if self.mainWindow.currentRole == "librarian":
+            self.addBookButton.clicked.connect(self.openCreateDialog)
+        else:
+            self.addBookButton.setVisible(False)
 
     def _goBack(self):
         self.mainWindow.stackedWidget.setCurrentWidget(self.mainWindow.mainPage)
@@ -80,13 +84,15 @@ class BookManagementPageController:
 
     def populateBookList(self, books):
         lay = self.bookListScrollLayout
+        showCrud = self.mainWindow.currentRole == "librarian"
         while lay.count():
             itm = lay.takeAt(0)
             if itm.widget():
                 itm.widget().deleteLater()
 
         for book in books:
-            item = BookListItem(book)
+            item = BookListItem(book, showCrud=showCrud)
+            item.detailRequested.connect(self.openDetailDialog)
             item.editRequested.connect(self.openEditDialog)
             item.deleteRequested.connect(self.deleteBook)
             lay.addWidget(item)
@@ -101,6 +107,12 @@ class BookManagementPageController:
         )
 
     # ---------------- dialogs ----------------
+    def openDetailDialog(self, book: dict):
+        from pages.bookManagement.bookDetailDialog import BookDetailDialog
+
+        dlg = BookDetailDialog(self.mainWindow, book=book)
+        dlg.exec()
+
     def openCreateDialog(self):
         self._openDialog(mode="create")
 
@@ -150,4 +162,11 @@ class BookManagementPageController:
         self.stockModel.replace_for_isbn(isbn, [])
 
         self.books = self.bookModel.getAll()
+        self.populateBookList(self.books)
+
+    def refreshRole(self):
+        role = self.mainWindow.currentRole()
+        # Add button
+        self.addBookButton.setVisible(role == "librarian")
+        # Re-render list (CRUD icons depend on role)
         self.populateBookList(self.books)

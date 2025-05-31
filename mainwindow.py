@@ -39,6 +39,11 @@ class MainWindow(QMainWindow):
         self.userManagementPageController = UserManagementPageController(self)
         self.bookLendHistoryPageController = BookLendHistoryPageController(self)
 
+    @property
+    def currentRole(self) -> str:
+        """Return the role of the logged-in user (lower-cased)."""
+        return self.authManager.getLoggedInUser().get("role", "member").lower()
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

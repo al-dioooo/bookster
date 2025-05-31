@@ -26,9 +26,10 @@ class LendListItem(QWidget):
 
     returnRequested = Signal(dict)
 
-    def __init__(self, rec: dict, parent=None):
+    def __init__(self, rec: dict, *, showReturn: bool, parent=None):
         super().__init__(parent)
         self.rec = rec
+        self._showReturn = showReturn
         self.setupUI()
         self.connectSignals()
 
@@ -75,7 +76,7 @@ class LendListItem(QWidget):
         root.addItem(QSpacerItem(10, 10, QSizePolicy.Expanding, QSizePolicy.Minimum))
 
         # Return button (only show if still borrowed)
-        if self.rec["status"] == "borrowed":
+        if self._showReturn and self.rec["status"] == "borrowed":
             self.btnReturn = QToolButton()
             self.btnReturn.setIcon(QIcon("assets/icons/arrow-back.svg"))
             self.btnReturn.setIconSize(QSize(16, 16))

@@ -8,15 +8,15 @@
     },
     {
         "id": 2,
-        "name": "Aldiooo",
-        "username": "aldio",
+        "name": "Alice TL",
+        "username": "alicetl",
         "password": "aldio1234",
         "role": "librarian"
     },
     {
         "id": 3,
-        "name": "Arisuuu",
-        "username": "arisu",
+        "name": "Alice TM",
+        "username": "alicetm",
         "password": "aldio1234",
         "role": "member"
     },

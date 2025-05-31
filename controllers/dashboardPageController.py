@@ -33,6 +33,9 @@ class DashboardPageController:
         self.mainLogoutButton.setIcon(QIcon("assets/icons/logout.svg"))
         self.mainLogoutButton.setIconSize(QSize(20, 20))
 
+        if self.mainWindow.currentRole == "member":
+            self.userManagementLinkButton.setVisible(False)
+
     def _connectSignals(self):
         self.bookManagementLinkButton.clicked.connect(self.goToBookManagementPage)
         self.userManagementLinkButton.clicked.connect(self.goToUserManagementPage)
@@ -63,7 +66,7 @@ class DashboardPageController:
         )
 
     def goToBookLendHistoryPage(self):
-        self.mainWindow.setWindowTitle("Bookster - Book Lend History")
+        self.mainWindow.setWindowTitle("Bookster - Borrow & Return History")
         self.mainWindow.stackedWidget.setCurrentWidget(
             self.mainWindow.bookLendHistoryPage
         )

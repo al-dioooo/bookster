@@ -6,6 +6,7 @@ from PySide6.QtWidgets import QWidget, QLineEdit, QToolButton, QMessageBox
 from helpers.lendModel import LendModel
 from helpers.bookModel import BookModel
 from helpers.userModel import UserModel
+
 from pages.bookLendHistory.lendFormDialog import LendFormDialog
 from pages.bookLendHistory.lendListItem import LendListItem
 
@@ -50,8 +51,12 @@ class BookLendHistoryPageController(QWidget):
     # -------------------------------------------------- Signals
     def connectSignals(self):
         self.searchField.textChanged.connect(self.filterList)
-        self.borrowButton.clicked.connect(self.openBorrowDialog)
         self.backButton.clicked.connect(self._goBack)
+
+        if self.mainWindow.currentRole == "librarian":
+            self.borrowButton.clicked.connect(self.openBorrowDialog)
+        else:
+            self.borrowButton.setVisible(False)
 
     def _goBack(self):
         self.mainWindow.stackedWidget.setCurrentWidget(self.mainWindow.mainPage)
@@ -66,7 +71,7 @@ class BookLendHistoryPageController(QWidget):
                 itm.widget().deleteLater()
 
         for r in rows:
-            item = LendListItem(r)
+            item = LendListItem(r, showReturn=self.mainWindow.currentRole == "librarian")
             item.returnRequested.connect(self.confirmReturn)
             lay.addWidget(item)
         lay.addStretch()

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Add Book</string>
+   <string>Book Form</string>
   </property>
   <layout class="QVBoxLayout" name="dialogVerticalLayout">
    <property name="leftMargin">
@@ -161,7 +161,7 @@ QLabel {
               <widget class="QToolButton" name="toolButton">
                <property name="minimumSize">
                 <size>
-                 <width>36</width>
+                 <width>140</width>
                  <height>36</height>
                 </size>
                </property>

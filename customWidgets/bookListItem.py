@@ -8,11 +8,12 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QSpacerItem,
     QSizePolicy,
-    QToolButton,
+    QToolButton
 )
 
 PLACEHOLDER = "assets/images/placeholder.png"
 THUMB_SIZE = QSize(75, 100)  # 3 : 4 thumbnail
+EYE_ICON = "assets/icons/eye.svg"
 
 
 class BookListItem(QWidget):
@@ -28,12 +29,14 @@ class BookListItem(QWidget):
       deleteRequested(dict book)
     """
 
+    detailRequested = Signal(dict)
     editRequested = Signal(dict)
     deleteRequested = Signal(dict)
 
-    def __init__(self, book: dict, parent=None):
+    def __init__(self, book: dict, *, showCrud: bool, parent=None):
         super().__init__(parent)
         self.book = book
+        self._showCrud = showCrud
         self.setupUI()
         self.connectSignals()
 
@@ -111,6 +114,19 @@ class BookListItem(QWidget):
         spacer = QSpacerItem(10, 10, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         # ── Buttons ────────────────────────────────────────────────────
+        self.btnDetail = QToolButton()
+        self.btnDetail.setIcon(QIcon(EYE_ICON))
+        self.btnDetail.setIconSize(QSize(16, 16))
+        self.btnDetail.setMinimumSize(QSize(36, 36))
+        self.btnDetail.setCursor(Qt.PointingHandCursor)
+        self.btnDetail.setToolTip("View details")
+        self.btnDetail.setStyleSheet(
+            "QToolButton {background:#FCD34D;color:#FFF;border-radius:12px;"
+            "border:3px solid #FEF3C7;padding:3px 3px 3px 6px;}"
+            "QToolButton:hover {background:rgba(252,211,77,200);}"
+            "QToolButton:pressed {background:rgba(252,211,77,150);}"
+        )
+
         self.btnEdit = QToolButton()
         self.btnEdit.setIcon(QIcon("assets/icons/edit.svg"))
         self.btnEdit.setIconSize(QSize(16, 16))
@@ -139,10 +155,17 @@ class BookListItem(QWidget):
         root.addWidget(coverLabel)
         root.addWidget(infoBox)
         root.addItem(spacer)
-        root.addWidget(self.btnEdit)
-        root.addWidget(self.btnDelete)
+        root.addWidget(self.btnDetail)
+        
+        if self._showCrud:
+            root.addWidget(self.btnEdit)
+            root.addWidget(self.btnDelete)
 
     # ---------- Signals -------------------------------------------------
     def connectSignals(self):
-        self.btnEdit.clicked.connect(lambda: self.editRequested.emit(self.book))
-        self.btnDelete.clicked.connect(lambda: self.deleteRequested.emit(self.book))
+        self.btnDetail.clicked.connect(lambda: self.detailRequested.emit(self.book))
+        
+        if hasattr(self, 'btnEdit'):
+            self.btnEdit.clicked.connect(lambda: self.editRequested.emit(self.book))
+        if hasattr(self, 'btnDelete'):
+            self.btnDelete.clicked.connect(lambda: self.deleteRequested.emit(self.book))

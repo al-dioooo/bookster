@@ -134,7 +134,7 @@ class Ui_StockListDialog(object):
     # setupUi
 
     def retranslateUi(self, StockListDialog):
-        StockListDialog.setWindowTitle(QCoreApplication.translate("StockListDialog", u"Manage Stock", None))
+        StockListDialog.setWindowTitle(QCoreApplication.translate("StockListDialog", u"Stock List", None))
         ___qtablewidgetitem = self.stockTableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("StockListDialog", u"SKU", None));
         ___qtablewidgetitem1 = self.stockTableWidget.horizontalHeaderItem(1)

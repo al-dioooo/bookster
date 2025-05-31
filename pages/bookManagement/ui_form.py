@@ -92,7 +92,7 @@ class Ui_Dialog(object):
 
         self.toolButton = QToolButton(self.frame_9)
         self.toolButton.setObjectName(u"toolButton")
-        self.toolButton.setMinimumSize(QSize(36, 36))
+        self.toolButton.setMinimumSize(QSize(140, 36))
         font2 = QFont()
         font2.setFamilies([u"Poppins"])
         font2.setPointSize(13)
@@ -448,7 +448,7 @@ class Ui_Dialog(object):
     # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Add Book", None))
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Book Form", None))
         self.bookFormDialogTitle.setText(QCoreApplication.translate("Dialog", u"Create Book", None))
         self.label_11.setText(QCoreApplication.translate("Dialog", u"Cover", None))
         self.toolButton.setText(QCoreApplication.translate("Dialog", u"Upload Image", None))
