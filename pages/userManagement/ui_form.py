@@ -227,11 +227,11 @@ class Ui_UserFormDialog(object):
         self.label_2.setText(QCoreApplication.translate("UserFormDialog", u"Username", None))
         self.label_3.setText(QCoreApplication.translate("UserFormDialog", u"Password", None))
         self.label_4.setText(QCoreApplication.translate("UserFormDialog", u"Role", None))
-        self.roleCombo.setItemText(0, QCoreApplication.translate("UserFormDialog", u"User", None))
+        self.roleCombo.setItemText(0, QCoreApplication.translate("UserFormDialog", u"Member", None))
         self.roleCombo.setItemText(1, QCoreApplication.translate("UserFormDialog", u"Librarian", None))
         self.roleCombo.setItemText(2, QCoreApplication.translate("UserFormDialog", u"Administrator", None))
 
-        self.roleCombo.setCurrentText(QCoreApplication.translate("UserFormDialog", u"User", None))
+        self.roleCombo.setCurrentText(QCoreApplication.translate("UserFormDialog", u"Member", None))
         self.cancelUserButton.setText(QCoreApplication.translate("UserFormDialog", u"Cancel", None))
         self.saveUserButton.setStyleSheet(QCoreApplication.translate("UserFormDialog", u"\n"
 "QPushButton {\n"

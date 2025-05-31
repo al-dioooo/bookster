@@ -233,11 +233,11 @@ QLineEdit:focus {
             </sizepolicy>
            </property>
            <property name="currentText">
-            <string>User</string>
+            <string>Member</string>
            </property>
            <item>
             <property name="text">
-             <string>User</string>
+             <string>Member</string>
             </property>
            </item>
            <item>
